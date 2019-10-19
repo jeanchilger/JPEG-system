@@ -1,0 +1,57 @@
+/*
+ * Styles form elements such as inputs, selects and so on.
+ * */
+
+@import "_variables.css";
+
+.form-group {
+    position: relative;
+    margin-top: 2rem;
+}
+
+/* labels */
+.form-group label {
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    transition: var(--transition-short);
+
+}
+
+/* input type text */
+.form-group input[type=text] {
+    display: block;
+    border: none;
+    border-bottom: 2px solid;
+    cursor: text;
+    transition: var(--transition-short);
+    background: transparent;
+}
+
+.form-group input[type=text]:focus {
+    outline: none;
+}
+
+.form-group input[type=text]:focus ~ label {
+    top: -20px;
+    font-size: 0.7rem;
+}
+
+/* input primary */
+.form-group--primary {
+    color: var(--primary);
+}
+
+.form-group--primary input[type=text] {
+    border-color: var(--primary);
+}
+
+/* input secondary */
+.form-group--secondary {
+    color: var(--secondary);
+}
+
+.form-group--secondary input[type=text] {
+    border-color: var(--secondary);
+}

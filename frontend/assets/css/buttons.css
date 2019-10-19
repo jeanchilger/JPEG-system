@@ -38,15 +38,15 @@
     color: var(--primary);
 }
 
-/* primary__gradient button */
-.btn-primary__gradient {
+/* primary--gradient button */
+.btn-primary--gradient {
     background: var(--primary);
     background-image: linear-gradient(to bottom right, var(--primary), var(--primary-light));
     color: var(--secondary);
 }
 
-/* secondary__gradient button */
-.btn-secondary__gradient {
+/* secondary--gradient button */
+.btn-secondary--gradient {
     background: var(--secondary);
     background-image: linear-gradient(to bottom right, var(--secondary), var(--secondary-light));
     color: var(--primary);
