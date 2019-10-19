@@ -1,0 +1,10 @@
+/*
+ * Declares variables common to most site modules.
+ * */
+
+:root {
+    /* colorschemes */
+    --primary: rgb(247, 206, 62);
+    --secondary: rgb(18, 18, 18);
+    --light: rgb(230, 230, 230);
+}
