@@ -9,25 +9,24 @@
     </head>
 
     <body>
-        <div class="sidenav" id="sidenav">
-            <i class="sidenav__close material-icons" id="sidenav-close">close</i>
-        </div>
+        <?php include "frontend/views/side-menu.php" ?>
 
-        <p>Primary btn:</p>
-        <a class="btn btn-primary" href="#" id="sidenav-trigger">siDenAV</a>
+        
         <br>
 
         <p>Secondary btn:</p>
-        <a class="btn btn-secondary" href="#">button</a>
+        <a class="btn btn--secondary" href="#">button</a>
         <br>
 
         <p>Primary gradient btn:</p>
-        <a class="btn btn-primary--gradient" href="#">button</a>
+        <a class="btn btn--primary--gradient" href="#">button</a>
         <br>
 
         <p>Secondary gradient btn:</p>
-        <a class="btn btn-secondary--gradient" href="#">button</a>
+        <a class="btn btn--secondary--gradient" href="#">button</a>
         <br>
+
+        <?php //include "frontend/views/login.php"; ?>
 
         <form class="" action="index.html" method="post">
             <p>INPUT TYPE TEXT PRIMARY</p>

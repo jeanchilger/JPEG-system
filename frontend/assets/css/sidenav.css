@@ -2,26 +2,100 @@
 
 :root {
     --sidenav-width: 15rem;
+    --close-padding: 0.4rem;
+    --item-padding: 0.6rem;
 }
 
+/* sidenav container */
 .sidenav {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     margin-left: calc(-1 * var(--sidenav-width));
-    background-color: var(--secondary);
     width: var(--sidenav-width);
     z-index: 99;
 
     transition: var(--transition-medium) all;
 }
 
+/* sidenav primary */
+.sidenav--primary {
+    background-color: var(--primary);
+}
+
+/* sidenav secondary */
+.sidenav--secondary {
+    background-color: var(--secondary);
+}
+
+/* sidenav close button */
 .sidenav__close {
     position: absolute;
     top: 0;
     right: 0;
-    color: var(--primary);
     user-select: none;
     cursor: pointer;
+    padding: var(--close-padding);
+}
+
+/* sidenav close for primary */
+.sidenav--primary .sidenav__close {
+    color: var(--secondary);
+}
+
+/* sidenav close for secondary */
+.sidenav--secondary .sidenav__close {
+    color: var(--primary);
+}
+
+/* sidenav logo */
+.sidenav__logo {
+    text-align: center;
+    padding: var(--close-padding);
+}
+
+/* remove standard ul and li styles */
+.sidenav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* remove link styles */
+.sidenav__nav a {
+    color: black;
+    text-decoration: none;
+    user-select: none;
+}
+
+/* sidenav navigation section */
+.sidenav__nav {
+
+}
+
+/* sidenav link*/
+.sidenav__nav__link {
+    display: block;
+    padding: var(--item-padding);
+    transition: var(--transition-medium) all;
+    cursor: pointer;
+}
+
+/* link theming for primary sidenav */
+.sidenav--primary .sidenav__nav__link {
+    color: var(--secondary);
+}
+
+.sidenav--primary .sidenav__nav__link:hover {
+    background-color: var(--primary-light);
+}
+
+/* link theming for secondary sidenav */
+.sidenav--secondary .sidenav__nav__link {
+    color: var(--primary);
+}
+
+.sidenav--secondary .sidenav__nav__link:hover {
+    background-color: var(--secondary-light);
 }
