@@ -4,38 +4,67 @@
 
 @import "_variables.css";
 
+/* form contents container */
 .form-group {
+    display: flex;
     position: relative;
+    width: 100%;
     margin-top: 2rem;
+    /* padding: 1rem; */
 }
 
 /* labels */
-.form-group label {
+.form-group input[type=text] ~ label,
+.form-group input[type=password] ~ label {
     text-transform: uppercase;
     position: absolute;
     top: 0;
+    left: 0;
     pointer-events: none;
     transition: var(--transition-short);
+}
 
+.form-group i ~ label {
+    left: 35px!important;
+}
+
+.form-group input[type=text]:focus ~ label,
+.form-group input[type=password]:focus ~ label {
+    top: -20px;
+    font-size: 0.7rem;
 }
 
 /* input type text */
-.form-group input[type=text] {
-    display: block;
+.form-group input[type=text],
+.form-group input[type=password] {
+    display: inline-block;
     border: none;
     border-bottom: 2px solid;
     cursor: text;
     transition: var(--transition-short);
-    background: transparent;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-.form-group input[type=text]:focus {
+@media only screen and (max-width: 576px) {
+    .form-group input[type=text],
+    .form-group input[type=password] {
+        display: block;
+        width: 100%;
+    }
+}
+
+.form-group input[type=text]:focus,
+.form-group input[type=password]:focus {
     outline: none;
 }
 
-.form-group input[type=text]:focus ~ label {
-    top: -20px;
-    font-size: 0.7rem;
+/* TODO: this is the best solution? */
+/* input prefix */
+.form-group i {
+    display: inline-block;
+    padding: 0.2rem;
+    min-width: 35px;
+    max-width: 35px;
 }
 
 /* input primary */
@@ -43,8 +72,10 @@
     color: var(--primary);
 }
 
-.form-group--primary input[type=text] {
+.form-group--primary input[type=text],
+.form-group--primary input[type=password] {
     border-color: var(--primary);
+    /* background-color: var(--primary-lighter); */
 }
 
 /* input secondary */
@@ -52,6 +83,8 @@
     color: var(--secondary);
 }
 
-.form-group--secondary input[type=text] {
+.form-group--secondary input[type=text],
+.form-group--secondary input[type=password] {
     border-color: var(--secondary);
+    /* background-color: var(--secondary-lighter); */
 }

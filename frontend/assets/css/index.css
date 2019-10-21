@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap'); /* Roboto font */
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap"); /* Roboto font */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons"); /* material icons */
 @import "buttons.css";
 @import "forms.css";
+@import "colors.css";
+@import "sidenav.css";
 
 * {
     font-family: Roboto;

@@ -6,14 +6,16 @@
     /* COLORSCHEMES */
     --primary: rgb(247, 206, 62);
     --primary-light: rgb(255, 235, 164);
+    --primary-lighter: rgb(255, 247, 219);
 
     --secondary: rgb(18, 18, 18);
     --secondary-light: rgb(68, 67, 67);
+    --secondary-lighter: rgb(135, 135, 135);
 
     --light: rgb(230, 230, 230);
 
     /* BORDER RADIUS */
-    --border-radius: 2px;
+    --border-radius: 3px;
 
     /* TRANSITIONS */
     --transition-short: 0.1s ease-out;

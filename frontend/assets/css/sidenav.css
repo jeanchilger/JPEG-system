@@ -1,0 +1,27 @@
+@import "_variables.css";
+
+:root {
+    --sidenav-width: 15rem;
+}
+
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-left: calc(-1 * var(--sidenav-width));
+    background-color: var(--secondary);
+    width: var(--sidenav-width);
+    z-index: 99;
+
+    transition: var(--transition-medium) all;
+}
+
+.sidenav__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--primary);
+    user-select: none;
+    cursor: pointer;
+}

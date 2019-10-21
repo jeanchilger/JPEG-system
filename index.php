@@ -9,8 +9,12 @@
     </head>
 
     <body>
+        <div class="sidenav" id="sidenav">
+            <i class="sidenav__close material-icons" id="sidenav-close">close</i>
+        </div>
+
         <p>Primary btn:</p>
-        <a class="btn btn-primary" href="#">button</a>
+        <a class="btn btn-primary" href="#" id="sidenav-trigger">siDenAV</a>
         <br>
 
         <p>Secondary btn:</p>
@@ -29,16 +33,25 @@
             <p>INPUT TYPE TEXT PRIMARY</p>
 
             <div class="form-group form-group--primary">
-                <input type="text" id="ex1" value="">
+                <i class="material-icons">email</i>
+                <input type="text" id="ex1">
                 <label for="ex1">username</label>
+            </div>
+
+            <div class="form-group form-group--primary">
+                <i class="material-icons">lock</i>
+                <input type="password" id="ex2">
+                <label for="ex2">password</label>
             </div>
 
             <p>INPUT TYPE TEXT SECONDARY</p>
 
             <div class="form-group form-group--secondary">
-                <input type="text" id="ex1" value="">
-                <label for="ex1">username</label>
+                <input type="text" id="ex3" value="">
+                <label for="ex3">username</label>
             </div>
         </form>
+
+        <script src="frontend/assets/js/sidenav.js" charset="utf-8"></script>
     </body>
 </html>
