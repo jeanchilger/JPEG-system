@@ -11,7 +11,9 @@
     <body>
         <?php include "frontend/views/side-menu.php" ?>
 
-        
+        <?php include "frontend/views/client-register.php" ?>
+
+
         <br>
 
         <p>Secondary btn:</p>
@@ -51,6 +53,7 @@
             </div>
         </form>
 
+        <script src="frontend/assets/js/forms.js" charset="utf-8"></script>
         <script src="frontend/assets/js/sidenav.js" charset="utf-8"></script>
     </body>
 </html>
