@@ -4,6 +4,8 @@
 @import "forms.css";
 @import "colors.css";
 @import "sidenav.css";
+@import "modal.css";
+@import "text.css";
 
 * {
     font-family: Roboto;

@@ -6,7 +6,7 @@
 
 /* backgrounds */
 .bg-primary {
-    background-color: var(--primary) !important!important!important!important;
+    background-color: var(--primary);
 }
 
 .bg-secondary {

@@ -15,7 +15,7 @@
     --light: rgb(230, 230, 230);
 
     /* BORDER RADIUS */
-    --border-radius: 3px;
+    --border-weight: 3px;
 
     /* TRANSITIONS */
     --transition-short: 0.1s ease-out;
@@ -23,13 +23,12 @@
     --transition-long: 0.4s ease-out;
 
     /* PADDINGS */
-    --btn-padding: 0.5rem 1rem;
+    --basic-padding: 0.5rem 1rem;
 
     /* SHADOWS */
     --box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
                   0 3px 1px -2px rgba(0,0,0,0.12),
                   0 1px 5px 0 rgba(0,0,0,0.2);
-    --bright-percentage: 10%;
 
     /* BREAKPOINTS */
     --break-sm: 576px;

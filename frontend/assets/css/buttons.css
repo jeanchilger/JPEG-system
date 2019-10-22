@@ -13,11 +13,11 @@
 
 /* common styles for all buttons */
 .btn {
-    padding: var(--btn-padding);
+    padding: var(--basic-padding);
     box-shadow: var(--box-shadow);
     text-transform: uppercase;
 
-    border-radius: var(--border-radius);
+    border-radius: var(--border-weight);
 
     transition: all var(--transition-short);
 

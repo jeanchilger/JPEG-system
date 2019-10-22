@@ -22,14 +22,23 @@
 
 /* labels */
 .form-group input[type=text] ~ label,
-.form-group input[type=password] ~ label {
+.form-group input[type=password] ~ label,
+.form-group input[type=number] ~ label {
     text-transform: uppercase;
     position: absolute;
-    top: var(--group-padding-top);
-    left: var(--group-padding-left);
     pointer-events: none;
-    transition: var(--transition-short);
+    left: var(--group-padding-left);
     user-select: none;
+}
+
+.form-group input[type=text] ~ label,
+.form-group input[type=password] ~ label {
+    top: var(--group-padding-top);
+    transition: var(--transition-short);
+}
+
+.form-group input[type=number] ~ label {
+    top: 0;
 }
 
 .form-group i ~ label {
@@ -42,18 +51,49 @@
     font-size: 0.7rem;
 }
 
-/* input type text */
+.active-label {
+    top: 0 !important;
+    font-size: 0.7rem !important;
+}
+
+/* common input css */
 .form-group input[type=text],
-.form-group input[type=password] {
+.form-group input[type=password],
+.form-group input[type=number] {
     display: inline-block;
     border: none;
-    border-bottom: 2px solid;
     cursor: text;
     background: transparent;
-    transition: var(--transition-short);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
     width: 100%;
+}
 
+/* text fields */
+.form-group input[type=text],
+.form-group input[type=password] {
+    border-bottom: 2px solid;
+    transition: var(--transition-short);
+    border-radius: var(--border-weight) var(--border-weight) 0 0;
+}
+
+/* input type number */
+.form-group input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.form-group input[type=number] {
+    border: 2px solid;
+    border-radius: var(--border-weight);
+    padding: 0.3rem;
+}
+
+.form-group .plus-sign,
+.form-group .minus-sign {
+    display: inline;
+    cursor: pointer;
+}
+
+.form-group input[type=number] ~ .minus-sign {
+    float: right;
 }
 
 @media only screen and (max-width: 576px) {
@@ -65,19 +105,20 @@
 }
 
 .form-group input[type=text]:focus,
-.form-group input[type=password]:focus {
+.form-group input[type=password]:focus,
+.form-group input[type=number]:focus {
     outline: none;
 }
 
 /* TODO: this is the best solution? */
 /* input prefix */
-.form-group i {
+.form-group i,
+.form-group inp {
     display: inline-block;
     padding: 0.2rem;
     min-width: var(--icon-min-size);
     max-width: var(--icon-max-size);
     user-select: none;
-
 }
 
 /* input primary */
@@ -86,7 +127,8 @@
 }
 
 .form-group--primary input[type=text],
-.form-group--primary input[type=password] {
+.form-group--primary input[type=password],
+.form-group--primary input[type=number] {
     border-color: var(--primary);
     color: var(--primary);
 }
@@ -97,7 +139,8 @@
 }
 
 .form-group--secondary input[type=text],
-.form-group--secondary input[type=password] {
+.form-group--secondary input[type=password],
+.form-group--secondary input[type=number] {
     border-color: var(--secondary);
-    /* background-color: var(--secondary-lighter); */
+    color: var(--primary);
 }
