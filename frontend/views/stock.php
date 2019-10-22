@@ -17,7 +17,7 @@
 
             <!-- product quantity field -->
             <div class="form-group form-group--primary">
-                
+
                 <input type="number" id="quantity">
 
                 <label for="quantity">quantidade</label>
@@ -29,6 +29,7 @@
     </div>
 </div>
 
-<a class="btn btn--secondary--gradient">modal trigger</a>
+<a class="btn btn--secondary--gradient" id="modal-trigger">modal trigger</a>
 
 <script src="frontend/assets/js/forms.js" charset="utf-8"></script>
+<script src="frontend/assets/js/modal.js" charset="utf-8"></script>

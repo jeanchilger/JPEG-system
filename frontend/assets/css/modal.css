@@ -5,6 +5,29 @@
     --modal-height: auto;
 }
 
+@keyframes modalShow {
+    0% {
+        margin-top: -10rem;
+    }
+
+    25% {
+        margin-top: -5rem;
+    }
+
+    50% {
+        margin-top: -1rem;
+    }
+
+    75% {
+        margin-top: 1rem;
+
+    }
+
+    100% {
+        margin-top: auto;
+    }
+}
+
 /* modal box container */
 .modal {
     position: absolute;
@@ -18,6 +41,15 @@
     border-radius: var(--border-weight);
 
     box-shadow: var(--box-shadow);
+
+    z-index: 99;
+
+    margin-top: -20rem;
+
+    display: none;
+    opacity: 0;
+
+    transition: var(--transition-medium);
 }
 
 /* modal header */
