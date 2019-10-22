@@ -1,0 +1,21 @@
+/* defines a title that is prefixed by a icon */
+.prefixed-title {
+    vertical-align: middle;
+}
+
+.prefixed-title .prefix,
+.prefixed-title .title {
+    display: inline;
+    vertical-align: middle;
+}
+
+.prefixed-title .prefix {
+    font-size: 2rem;
+}
+
+/* titles */
+.title {
+    font-weight: normal;
+    text-transform: uppercase;
+
+}
