@@ -6,6 +6,7 @@
 @import "sidenav.css";
 @import "modal.css";
 @import "text.css";
+@import "calendar.css";
 
 * {
     font-family: Roboto;

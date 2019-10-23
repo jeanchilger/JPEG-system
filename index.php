@@ -13,9 +13,11 @@
 
         <?php //include "frontend/views/client-register.php" ?>
 
-        <?php include "frontend/views/stock.php" ?>
+        <?php //include "frontend/views/stock.php" ?>
+        <?php include "frontend/includes/schedule.php" ?>
 
 
+        <?php '
         <br>
 
         <p>Secondary btn:</p>
@@ -54,7 +56,9 @@
                 <label for="ex3">username</label>
             </div>
         </form>
+        ' ?>
 
         <!-- <script src="frontend/assets/js/sidenav.js" charset="utf-8"></script> -->
+        <script src="frontend/assets/js/calendar.js" charset="utf-8"></script>
     </body>
 </html>

@@ -29,7 +29,12 @@ function closeModal() {
         modalOverlay.style.display = "none";
     }, 150);
 
-    MODAL.style.display = "none";
+    MODAL.classList.add("modal-close");
+
+    setTimeout(function () {
+        MODAL.style.display = "none";
+        MODAL.classList.remove("modal-close");
+    }, 350);
 }
 
 function openModal() {
@@ -37,7 +42,11 @@ function openModal() {
     modalOverlay.style.opacity = "1";
 
     MODAL.style.display = "block";
-    MODAL.style.animation = "modalShow 1s ease";
+    MODAL.classList.add("modal-open");
+
+    setTimeout(function () {
+        MODAL.classList.remove("modal-open");
+    }, 400);
 }
 
 document.getElementById("modal-trigger").onclick = function () {
