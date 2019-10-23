@@ -14,7 +14,7 @@
         <?php //include "frontend/views/client-register.php" ?>
 
         <?php //include "frontend/views/stock.php" ?>
-        <?php include "frontend/includes/schedule.php" ?>
+        <?php //include "frontend/includes/schedule.php" ?>
 
 
         <?php '
@@ -57,6 +57,20 @@
             </div>
         </form>
         ' ?>
+
+        <div class="collection collection--secondary">
+            <div class="collection__item">
+                <img class="prefix" src="frontend/assets/img/logo.png">
+                miau
+                <i class="material-icons sufix">edit</i>
+            </div>
+            <div class="collection__item">
+                miau
+            </div>
+            <div class="collection__item">
+                miau
+            </div>
+        </div>
 
         <!-- <script src="frontend/assets/js/sidenav.js" charset="utf-8"></script> -->
         <script src="frontend/assets/js/calendar.js" charset="utf-8"></script>

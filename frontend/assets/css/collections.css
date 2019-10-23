@@ -1,0 +1,46 @@
+@import "_variables.css";
+
+body {
+    padding: 1em!important;
+}
+/* collection container */
+.collection {
+    display: block;
+    border-radius: var(--border-weight);
+}
+
+/* collection item */
+.collection__item {
+    padding: 1rem;
+}
+
+/* collection item icon sufix */
+.collection__item .sufix {
+    float: right;
+}
+
+/* collection item prefix (image) */
+.collection__item .prefix {
+    float: left;
+    margin-right: 0.5rem;
+}
+
+/* collection primary theming */
+.collection--primary {
+    background-color: var(--primary-light);
+    color: var(--secondary);
+}
+
+.collection--primary .collection__item:not(:first-child) {
+    border-top: 1px solid var(--primary);
+}
+
+/* collection secondary theming */
+.collection--secondary {
+    background-color: var(--secondary-light);
+    color: var(--primary);
+}
+
+.collection--secondary .collection__item:not(:first-child) {
+    border-top: 1px solid var(--secondary);
+}
