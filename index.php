@@ -14,7 +14,9 @@
         <?php //include "frontend/views/client-register.php" ?>
 
         <?php //include "frontend/views/stock.php" ?>
-        <?php include "frontend/includes/schedule.php" ?>
+        <?php //include "frontend/includes/schedule.php" ?>
+        <?php //include "frontend/views/login.php" ?>
+        <?php include "frontend/" ?>
 
 
         <?php '
@@ -58,7 +60,7 @@
         </form>
         ' ?>
 
-        <!-- <script src="frontend/assets/js/sidenav.js" charset="utf-8"></script> -->
-        <script src="frontend/assets/js/calendar.js" charset="utf-8"></script>
+        <script src="frontend/assets/js/forms.js" charset="utf-8"></script>
+        <!-- <script src="frontend/assets/js/calendar.js" charset="utf-8"></script> -->
     </body>
 </html>
