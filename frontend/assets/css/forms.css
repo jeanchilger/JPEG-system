@@ -84,6 +84,7 @@
     border: 2px solid;
     border-radius: var(--border-weight);
     padding: 0.3rem;
+    margin-top: 0.5rem;
 }
 
 .form-group .plus-sign,
