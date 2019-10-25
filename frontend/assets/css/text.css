@@ -1,6 +1,8 @@
 /* defines a title that is prefixed by a icon */
 .prefixed-title {
     vertical-align: middle;
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .prefixed-title .prefix,
@@ -11,11 +13,17 @@
 
 .prefixed-title .prefix {
     font-size: 2rem;
+    padding: 0.2rem;
 }
 
 /* titles */
 .title {
     font-weight: normal;
     text-transform: uppercase;
+    font-size: 1.2rem;
+}
 
+/* positioning */
+.text-center {
+    text-align: center;
 }

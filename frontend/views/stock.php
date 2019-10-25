@@ -29,7 +29,6 @@
     </div>
 </div>
 
-<a class="btn btn--secondary--gradient" id="modal-trigger">modal trigger</a>
 
 <script src="frontend/assets/js/forms.js" charset="utf-8"></script>
 <script src="frontend/assets/js/modal.js" charset="utf-8"></script>

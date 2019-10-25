@@ -91,6 +91,7 @@
 .form-group .minus-sign {
     display: inline;
     cursor: pointer;
+    margin-top: 0.5rem;
 }
 
 .form-group input[type=number] ~ .minus-sign {

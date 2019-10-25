@@ -7,6 +7,7 @@ body {
 .collection {
     display: block;
     border-radius: var(--border-weight);
+    width: 100%;
 }
 
 /* collection item */
@@ -14,9 +15,11 @@ body {
     padding: 1rem;
 }
 
-/* collection item icon sufix */
-.collection__item .sufix {
+/* collection item icon suffix */
+.collection__item .suffix {
     float: right;
+    cursor: pointer;
+    user-select: none;
 }
 
 /* collection item prefix (image) */

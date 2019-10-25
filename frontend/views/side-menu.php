@@ -11,4 +11,6 @@
     </div>
 </div>
 
-<a class="btn btn--primary" href="#" id="sidenav-trigger">siDenAV</a>
+<i class="material-icons text-primary" id="sidenav-trigger">menu</i>
+
+<script src="frontend/assets/js/sidenav.js" charset="utf-8"></script>
