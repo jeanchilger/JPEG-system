@@ -23,7 +23,8 @@
 /* labels */
 .form-group input[type=text] ~ label,
 .form-group input[type=password] ~ label,
-.form-group input[type=number] ~ label {
+.form-group input[type=number] ~ label,
+.form-group textarea ~ label {
     text-transform: uppercase;
     position: absolute;
     pointer-events: none;
@@ -32,7 +33,8 @@
 }
 
 .form-group input[type=text] ~ label,
-.form-group input[type=password] ~ label {
+.form-group input[type=password] ~ label,
+.form-group textarea ~ label {
     top: var(--group-padding-top);
     transition: var(--transition-short);
 }
@@ -46,7 +48,8 @@
 }
 
 .form-group input[type=text]:focus ~ label,
-.form-group input[type=password]:focus ~ label {
+.form-group input[type=password]:focus ~ label,
+.form-group textarea:focus ~ label {
     top: 0;
     font-size: 0.7rem;
 }
@@ -59,7 +62,8 @@
 /* common input css */
 .form-group input[type=text],
 .form-group input[type=password],
-.form-group input[type=number] {
+.form-group input[type=number],
+.form-group textarea {
     display: inline-block;
     border: none;
     cursor: text;
@@ -69,10 +73,18 @@
 
 /* text fields */
 .form-group input[type=text],
-.form-group input[type=password] {
+.form-group input[type=password],
+.form-group textarea {
     border-bottom: 2px solid;
     transition: var(--transition-short);
     border-radius: var(--border-weight) var(--border-weight) 0 0;
+}
+
+/* textarea */
+.form-group textarea {
+    resize: none;
+    height: auto;
+    overflow: hidden;
 }
 
 /* input type number */
@@ -100,7 +112,8 @@
 
 @media only screen and (max-width: 576px) {
     .form-group input[type=text],
-    .form-group input[type=password] {
+    .form-group input[type=password],
+    .form-group textarea {
         display: block;
         width: 100%;
     }
@@ -108,11 +121,11 @@
 
 .form-group input[type=text]:focus,
 .form-group input[type=password]:focus,
-.form-group input[type=number]:focus {
+.form-group input[type=number]:focus,
+.form-group textarea:focus {
     outline: none;
 }
 
-/* TODO: this is the best solution? */
 /* input prefix */
 .form-group i,
 .form-group inp {
@@ -130,7 +143,8 @@
 
 .form-group--primary input[type=text],
 .form-group--primary input[type=password],
-.form-group--primary input[type=number] {
+.form-group--primary input[type=number],
+.form-group--primary textarea {
     border-color: var(--primary);
     color: var(--primary);
 }
@@ -142,7 +156,8 @@
 
 .form-group--secondary input[type=text],
 .form-group--secondary input[type=password],
-.form-group--secondary input[type=number] {
+.form-group--secondary input[type=number],
+.form-group--secondary textarea {
     border-color: var(--secondary);
     color: var(--primary);
 }

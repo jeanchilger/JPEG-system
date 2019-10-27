@@ -1,0 +1,64 @@
+@import "_variables.css";
+
+/* collapsible container */
+.collapsible {
+    display: block;
+    border-radius: var(--border-weight);
+    width: 100%;
+}
+
+/* collapsible item */
+.collapsible__item {
+
+}
+
+/* collapsible item icon suffix */
+.collapsible__item .collapsible__header .suffix {
+    float: right;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* collapsible item prefix (image) */
+.collapsible__item .collapsible__header .prefix {
+    float: left;
+    margin-right: 0.5rem;
+}
+
+/* collapsible header */
+.collapsible__header {
+    cursor: pointer;
+    padding: 1rem;
+}
+
+/* collapsible body */
+.collapsible__body {
+    padding-top: 0 !important;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-medium);
+}
+
+/* collapsible primary theming */
+.collapsible--primary {
+    background-color: var(--primary-light);
+    color: var(--secondary);
+}
+
+.collapsible--primary .collapsible__item:not(:first-child) {
+    border-top: 1px solid var(--primary);
+}
+
+.collapsible--primary .collapsible__body {
+    background-color: var(--primary-lighter);
+}
+
+/* collapsible secondary theming */
+.collapsible--secondary {
+    background-color: var(--secondary-light);
+    color: var(--primary);
+}
+
+.collapsible--secondary .collapsible__item:not(:first-child) {
+    border-top: 1px solid var(--secondary);
+}

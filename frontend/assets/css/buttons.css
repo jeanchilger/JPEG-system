@@ -23,6 +23,14 @@
 
     text-align: center!important;
     cursor: pointer;
+
+}
+
+/* button icon */
+.btn i {
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
 }
 
 @media only screen and (max-width: 576px) {
@@ -32,6 +40,11 @@
     }
 }
 
+/* float button */
+.btn--float {
+    border-radius: calc(20 * var(--border-weight));
+    float: right;
+}
 
 /* primary button */
 .btn--primary {

@@ -1,7 +1,7 @@
 @import "_variables.css";
 
 :root {
-    --modal-width: 15rem;
+    --modal-width: 22rem;
     --modal-height: auto;
 }
 
@@ -61,6 +61,12 @@
     display: none;
 
     transition: var(--transition-medium);
+}
+
+@media only screen and (max-width: 360px) {
+    .modal {
+        width: 90%;
+    }
 }
 
 /* modal header */

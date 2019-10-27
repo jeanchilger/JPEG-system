@@ -16,16 +16,3 @@
 .bg-light {
     background-clor: var(--light);
 }
-
-/* texts */
-.text-primary {
-    color: var(--primary);
-}
-
-.text-secondary {
-    color: var(--secondary);
-}
-
-.text-light {
-    color: var(--light);
-}

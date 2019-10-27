@@ -8,75 +8,27 @@
         <link rel="stylesheet" href="frontend/assets/css/index.css">
     </head>
 
-    <body class="bg-secondary">
-        <?php include "frontend/views/side-menu.php" ?>
+    <body class>
 
-        <?php //include "frontend/views/client-register.php" ?>
+        <!-- TELA DE LOGIN -->
+        <?php //include "frontend/views/login.php"; ?>
 
-        <?php //include "frontend/views/stock.php" ?>
-        <?php //include "frontend/views/login.php" ?>
+        <!-- TELA PRINCIPAL -->
+        <?php //include "frontend/includes/side-menu.php"; ?>
+        <?php //include "frontend/views/main.php"; ?>
 
-        <style media="screen">
-            .row:not(:first-child) {
-                margin-top: 2rem;
-            }
+        <!-- CADASTRO DE CLIENTES -->
+        <?php //include "frontend/views/client-register.php"; ?>
 
-            img {
-                width: 100%;
-                height: auto;
-            }
-        </style>
+        <!-- AGENDA -->
+        <?php include "frontend/views/schedule.php"; ?>
 
+        <!-- ESTOQUE -->
+        <?php //include "frontend/views/stock.php"; ?>
 
+        <!-- BOLETOS -->
+        <?php //include "frontend/views/payment-bill.php"; ?>
 
-        <div class="container">
-            <!-- Finanças -->
-            <div class="row">
-                <div class="col-12 col-md-8 offset-md-2">
-                    <div class="text-primary prefixed-title text-center">
-                        <i class="material-icons prefix">trending_up</i>
-                        <h1 class="title"> Finanças </h1>
-                    </div>
-                    <img src="frontend/assets/img/chart.png" alt="Os gráficos serão gerados utilizando framework">
-                </div>
-            </div>
-            <!-- Próximos pagamentos -->
-            <div class="row">
-                <div class="col-12 col-md-8 offset-md-2">
-
-                    <div class="text-primary prefixed-title text-center">
-                        <i class="material-icons prefix">credit_card</i>
-                        <h1 class="title"> Próximos pagamentos </h1>
-                    </div>
-                    <div class="collection collection--primary">
-                        <div class="collection__item">
-                            James Richardson
-                            <i class="material-icons suffix">message</i>
-                        </div>
-                        <div class="collection__item">
-                            Madeline Kennedy
-                            <i class="material-icons suffix">message</i>
-                        </div>
-                        <div class="collection__item">
-                            Anna Coleman
-                            <i class="material-icons suffix">message</i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Agenda -->
-            <div class="row">
-                <div class="col-12 col-md-8 offset-md-2">
-                    <div class="text-primary prefixed-title text-center">
-                        <i class="material-icons prefix">event</i>
-                        <h1 class="title"> Agenda </h1>
-                    </div>
-
-                    <?php include "frontend/includes/schedule.php" ?>
-                </div>
-            </div>
-        </div>
-
-        <script src="frontend/assets/js/forms.js" charset="utf-8"></script>
+        <!-- <script src="frontend/assets/js/forms.js" charset="utf-8"></script> -->
     </body>
 </html>

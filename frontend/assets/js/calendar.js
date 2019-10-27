@@ -20,6 +20,10 @@ function initCalendar(calendar, month) {
      * */
 
     calendar.innerHTML = `
+    <div class="calendar__badge">
+        4
+    </div>
+
     <div class="calendar__header" id="calendar-header">
     ` + MONTH_NAMES[month] + `
     </div>
@@ -60,15 +64,23 @@ function fillCalendarDays(maxDays, calendar) {
      * days for current days.
      * */
 
+
     for (let i = 0; i < maxDays; i++) {
-        calendar.querySelector("#calendar-days").innerHTML += `
-        <li>` + (i + 1) + `</li>
-        `;
+        if (i == 12 || i == 16 || i == 24 || i == 28) {
+            calendar.querySelector("#calendar-days").innerHTML += `
+            <li><span class=active>` + (i + 1) + `</span></li>
+            `;
+
+        } else {
+            calendar.querySelector("#calendar-days").innerHTML += `
+            <li>` + (i + 1) + `</li>
+            `;
+        }
     }
 }
 
-window.onload = function () {
-    let calendar = document.getElementById("calendar");
+let calendar = document.getElementById("calendar");
+// calendar.onload = function () {
 
     let currentDate = new Date();
     let month = currentDate.getMonth();
@@ -80,4 +92,4 @@ window.onload = function () {
     initCalendar(calendar, month);
     fillMissingDays(firstDay, calendar);
     fillCalendarDays(maxDays, calendar);
-}
+// }

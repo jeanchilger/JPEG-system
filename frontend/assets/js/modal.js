@@ -14,13 +14,18 @@ modalOverlay.style.cssText = `
     opacity: 0;
 `;
 
-modalOverlay.id = "modal-overlay";
+//modalOverlay.id = "modal-overlay";
 modalOverlay.onclick = function () {
     closeModal();
 }
 
 window.onload = function () {
-    document.getElementsByTagName("body")[0].appendChild(modalOverlay);
+    if (document.getElementsByTagName("body")[0]) {
+        document.getElementsByTagName("body")[0].appendChild(modalOverlay);
+
+    } else {
+        document.getElementById("modal-overlay").appendChild(modalOverlay);
+    }
 }
 
 function closeModal() {

@@ -11,6 +11,7 @@
 @import "text.css";
 @import "calendar.css";
 @import "collections.css";
+@import "collapsible.css";
 
 * {
     font-family: Roboto;

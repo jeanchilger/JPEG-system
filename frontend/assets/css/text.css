@@ -27,3 +27,18 @@
 .text-center {
     text-align: center;
 }
+
+/* text primary theming */
+.text-primary {
+    color: var(--primary);
+}
+
+/* text secondary theming */
+.text-secondary {
+    color: var(--secondary);
+}
+
+/* text light theming */
+.text-light {
+    color: var(--light);
+}
