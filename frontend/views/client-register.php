@@ -10,6 +10,8 @@
 
 </style>
 
+<i class="material-icons text-secondary" style="cursor: pointer;padding: 0.4rem;font-size: 2rem">keyboard_arrow_left</i>
+
 <div class="container">
     <div class="row">
         <div class="text-secondary prefixed-title col-md-8 offset-md-2">
@@ -50,7 +52,7 @@
             </div>
 
             <button class="btn btn--secondary--gradient" type="submit" name="submit">
-                próximo
+                Prosseguir
                 <i class="material-icons"></i>
             </button>
 

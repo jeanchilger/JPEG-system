@@ -19,15 +19,20 @@
 
         <!-- CADASTRO DE CLIENTES -->
         <?php //include "frontend/views/client-register.php"; ?>
+        <?php //include "frontend/views/payment-method.php"; ?>
 
         <!-- AGENDA -->
-        <?php include "frontend/views/schedule.php"; ?>
+        <?php //include "frontend/views/schedule.php"; ?>
 
         <!-- ESTOQUE -->
         <?php //include "frontend/views/stock.php"; ?>
+        <?php //include "frontend/views/stock-list.php"; ?>
 
         <!-- BOLETOS -->
         <?php //include "frontend/views/payment-bill.php"; ?>
+
+        <!-- FINANÇAS -->
+        <?php include "frontend/views/finances.php" ?>
 
         <!-- <script src="frontend/assets/js/forms.js" charset="utf-8"></script> -->
     </body>

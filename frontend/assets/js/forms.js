@@ -37,7 +37,7 @@ document.querySelectorAll(".form-group").forEach(function (e) {
     });
 
     /* input type text */
-    let inputNumber = e.querySelector("input[type=number]");
+    let inputNumber = e.querySelector("input[data-role=input-number]");
     if (inputNumber) {
         console.log(inputNumber);
         e.insertBefore(newMinusSign(), inputNumber);
@@ -71,9 +71,6 @@ document.querySelectorAll(".form-group").forEach(function (e) {
         inputDate.onkeypress = function (event) {
             if (inputDate.value.length == 2 || inputDate.value.length == 5) {
                 inputDate.value += "/";
-
-            } else if (inputDate.value.length >= 10) {
-                inputDate.value = inputDate.value.substr(0, inputDate.value.length - 1);
             }
         }
     }
@@ -84,10 +81,20 @@ document.querySelectorAll(".form-group").forEach(function (e) {
         inputTime.onkeypress = function (event) {
             if (inputTime.value.length == 2) {
                 inputTime.value += ":";
-
-            } else if (inputTime.value.length >= 5) {
-                inputTime.value = inputTime.value.substr(0, inputTime.value.length - 1);
             }
         }
     }
+});
+
+document.querySelectorAll("[data-role=select]").forEach(function (e) {
+    e.querySelectorAll(".collection__item").forEach(function (elem) {
+        elem.onclick = function () {
+            elem.classList.toggle("selected");
+            e.querySelectorAll(".collection__item").forEach(function (elem2) {
+                if (elem != elem2 && elem2.classList.contains("selected")) {
+                    elem2.classList.remove("selected");
+                }
+            });
+        }
+    });
 });

@@ -41,24 +41,28 @@
 
 /* collapsible primary theming */
 .collapsible--primary {
-    background-color: var(--primary-light);
+    background-color: var(--primary);
     color: var(--secondary);
 }
 
 .collapsible--primary .collapsible__item:not(:first-child) {
-    border-top: 1px solid var(--primary);
+    border-top: 1px solid var(--primary-light);
 }
 
 .collapsible--primary .collapsible__body {
-    background-color: var(--primary-lighter);
+    background-color: var(--primary-light);
 }
 
 /* collapsible secondary theming */
 .collapsible--secondary {
-    background-color: var(--secondary-light);
+    background-color: var(--secondary);
     color: var(--primary);
 }
 
 .collapsible--secondary .collapsible__item:not(:first-child) {
-    border-top: 1px solid var(--secondary);
+    border-top: 1px solid var(--secondary-light);
+}
+
+.collapsible--secondary .collapsible__body {
+    background-color: var(--secondary-light);
 }

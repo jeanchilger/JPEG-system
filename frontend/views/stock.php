@@ -28,13 +28,13 @@
 
             <!-- product quantity field -->
             <div class="form-group form-group--primary">
-                <input type="number" id="quantity" name="quantity" min=1>
+                <input type="number" id="quantity" name="quantity" min=1 data-role="input-number">
                 <label for="quantity">quantidade</label>
             </div>
 
             <!-- product quantity field -->
             <div class="form-group form-group--primary">
-                <input type="number" id="minQuantity" name="minQuantity" min=1>
+                <input type="number" id="minQuantity" name="minQuantity" min=1 data-role="input-number">
                 <label for="minQuantity">quantidade mínima</label>
             </div>
 

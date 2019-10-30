@@ -19,7 +19,7 @@
     <!-- Finanças -->
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
-            <div class="text-primary prefixed-title text-center">
+            <div class="text-primary prefixed-title">
                 <i class="material-icons prefix">trending_up</i>
                 <h1 class="title"> Finanças </h1>
             </div>
@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
 
-            <div class="text-primary prefixed-title text-center">
+            <div class="text-primary prefixed-title">
                 <i class="material-icons prefix">credit_card</i>
                 <h1 class="title"> Próximos pagamentos </h1>
             </div>
@@ -53,7 +53,7 @@
     <!-- Agenda -->
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
-            <div class="text-primary prefixed-title text-center">
+            <div class="text-primary prefixed-title">
                 <i class="material-icons prefix">event</i>
                 <h1 class="title"> Agenda </h1>
             </div>

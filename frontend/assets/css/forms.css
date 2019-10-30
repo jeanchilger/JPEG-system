@@ -34,13 +34,15 @@
 
 .form-group input[type=text] ~ label,
 .form-group input[type=password] ~ label,
+.form-group input[type=number] ~ label,
 .form-group textarea ~ label {
     top: var(--group-padding-top);
     transition: var(--transition-short);
 }
 
-.form-group input[type=number] ~ label {
-    top: 0;
+.form-group input[data-role=input-number] ~ label {
+    top: 0 !important;
+    font-size: 1rem !important;
 }
 
 .form-group i ~ label {
@@ -49,6 +51,7 @@
 
 .form-group input[type=text]:focus ~ label,
 .form-group input[type=password]:focus ~ label,
+.form-group input[type=number]:focus ~ label,
 .form-group textarea:focus ~ label {
     top: 0;
     font-size: 0.7rem;
@@ -92,7 +95,7 @@
     -webkit-appearance: none;
 }
 
-.form-group input[type=number] {
+.form-group input[data-role=input-number] {
     border: 2px solid;
     border-radius: var(--border-weight);
     padding: 0.3rem;
@@ -106,7 +109,7 @@
     margin-top: 0.5rem;
 }
 
-.form-group input[type=number] ~ .minus-sign {
+.form-group input[data-role=input-number] ~ .minus-sign {
     float: right;
 }
 
@@ -159,5 +162,5 @@
 .form-group--secondary input[type=number],
 .form-group--secondary textarea {
     border-color: var(--secondary);
-    color: var(--primary);
+    color: var(--secondary);
 }

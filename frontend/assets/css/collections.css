@@ -7,19 +7,47 @@
     width: 100%;
 }
 
+/* collection used as a select */
+.collection[data-role=select] .collection__item {
+    cursor: pointer;
+    user-select: none;
+}
+
 /* collection item */
 .collection__item {
     padding: 1rem;
+    transition: var(--transition-short);
 }
 
-/* collection item icon suffix */
+.collection__item:first-child {
+    border-top-left-radius: var(--border-weight);
+    border-top-right-radius: var(--border-weight);
+}
+
+.collection__item:last-child {
+    border-bottom-left-radius: var(--border-weight);
+    border-bottom-right-radius: var(--border-weight);
+}
+
+.collection__item .collection__left {
+    display: inline-block;
+    width: 50%;
+}
+
+.collection__item .collection__right {
+    display: inline-block;
+    width: 50%;
+    float:right;
+}
+
+/* collection item suffix */
 .collection__item .suffix {
     float: right;
     cursor: pointer;
     user-select: none;
 }
 
-/* collection item prefix (image) */
+/* collection item prefix */
 .collection__item .prefix {
     float: left;
     margin-right: 0.5rem;
@@ -30,10 +58,6 @@
     border-radius: var(--border-weight);
 }
 
-.collection--ghost .collection__item {
-    border: none !important;
-}
-
 /* collection primary theming */
 .collection--primary {
     background-color: var(--primary);
@@ -41,7 +65,7 @@
 }
 
 .collection--primary .collection__item:not(:first-child) {
-    border-top: 1px solid var(--primary-light);
+    border-top: 1px solid var(--secondary);
 }
 
 .collection--primary .collection__badge {
@@ -50,8 +74,13 @@
     box-shadow: var(--box-shadow);
 }
 
-.collection--primary--outline .collection__item {
+.collection--primary--outline .collection__item:not(:first-child) {
     border-top: var(--border-weight) solid var(--secondary) !important;
+}
+
+.collection--primary .selected {
+    background-color: var(--secondary);
+    color: var(--primary);
 }
 
 /* collection secondary theming */
@@ -70,6 +99,16 @@
     box-shadow: var(--box-shadow);
 }
 
-.collection--primary--outline .collection__item {
+.collection--secondary--outline .collection__item {
     border-top: var(--border-weight) solid var(--primary) !important;
+}
+
+.collection--secondary .selected {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+/* collection ghost */
+.collection--ghost .collection__item {
+    border: none !important;
 }

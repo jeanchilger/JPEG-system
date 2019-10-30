@@ -54,6 +54,15 @@ function openModal() {
     }, 400);
 }
 
-document.getElementById("modal-trigger").onclick = function () {
-    openModal();
+document.querySelectorAll("[data-role=modal-trigger]").forEach(function (e) {
+    e.onclick = function () {
+        openModal();
+    }
+});
+
+let modalTrigger = document.getElementById("modal-trigger");
+if (modalTrigger) {
+    modalTrigger.onclick = function () {
+        openModal();
+    }
 }
