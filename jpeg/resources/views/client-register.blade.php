@@ -22,7 +22,7 @@
             <h1 class="title">Cadastro de clientes</h1>
         </div>
 
-        <form class="client-register-container col-12 col-md-8 offset-md-2" method="post">
+        <form class="client-register-container col-12 col-md-8 offset-md-2">
 
             <div class="form-group form-group--secondary">
                 <input type="text" name="name" id="name">
@@ -64,5 +64,5 @@
     </div>
 </div>
 
-<script src="frontend/assets/js/forms.js" charset="utf-8"></script>
+<script src="{{ asset('js/forms.js') }}" charset="utf-8"></script>
 @endsection

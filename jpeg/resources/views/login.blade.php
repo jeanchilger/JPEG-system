@@ -2,6 +2,7 @@
 
 @section("content")
 
+    <link rel="stylesheet" href="../css/index.css">
     <style media="screen">
         h1 {
             color: white;
