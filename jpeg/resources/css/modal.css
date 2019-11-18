@@ -1,0 +1,130 @@
+@import "_variables.css";
+
+:root {
+    --modal-width: 22rem;
+    --modal-height: auto;
+}
+
+/* modal animations */
+@keyframes modalShow {
+    0% {
+        margin-top: -30rem;
+    }
+
+    /* 1% {
+        margin-top: -15rem;
+    } */
+
+    50% {
+        margin-top: 3rem;
+    }
+
+    /* 75% {
+        margin-top: 1rem;
+
+    } */
+
+    100% {
+        margin-top: 0;
+    }
+}
+
+.modal-open {
+    animation: modalShow var(--transition-long);
+}
+
+.modal-close {
+    animation: modalShow var(--transition-long);
+    animation-direction: reverse;
+}
+
+/* modal box container */
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: var(--modal-width);
+    height: var(--modal-height);
+
+    background: transparent;
+
+    border-radius: var(--border-weight);
+
+    box-shadow: var(--box-shadow);
+
+    z-index: 99;
+
+    /* margin-top: 50%; */
+
+    display: none;
+
+    transition: var(--transition-medium);
+}
+
+@media only screen and (max-width: 360px) {
+    .modal {
+        width: 90%;
+    }
+}
+
+/* modal header */
+.modal__header {
+    width: 100%;
+    padding: var(--basic-padding);
+
+    border-top-left-radius: var(--border-weight);
+    border-top-right-radius: var(--border-weight);
+}
+
+/* modal title */
+.modal__title,
+.modal__title--prefixed {
+    text-transform: uppercase;
+    font-weight: normal;
+    text-align: center;
+}
+
+/* modal title prefixed by a icon */
+.modal__title--prefixed,
+.modal__title--prefixed i {
+    vertical-align: middle;
+}
+
+/* modal body */
+.modal__body {
+    width: 100%;
+    padding: var(--basic-padding);
+
+    border-bottom-left-radius: var(--border-weight);
+    border-bottom-right-radius: var(--border-weight);
+}
+
+/* modal primary theming */
+.modal--primary {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.modal--primary .modal__header {
+    background-color: var(--primary);
+}
+
+.modal--primary .modal__body {
+    background-color: var(--primary-light);
+}
+
+/* modal secondary theming */
+.modal--secondary {
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+.modal--secondary .modal__header {
+    background-color: var(--secondary);
+}
+
+.modal--secondary .modal__body {
+    background-color: var(--secondary-light);
+}

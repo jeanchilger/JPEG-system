@@ -1,0 +1,166 @@
+/*
+ * Styles form elements such as inputs, selects and so on.
+ * */
+
+@import "_variables.css";
+
+:root {
+    --group-padding-top: 1rem;
+    --group-padding-left: 0.2rem;
+
+    --icon-max-size: 35px;
+    --icon-min-size: 35px;
+}
+
+/* form contents container */
+.form-group {
+    display: flex;
+    position: relative;
+    margin-top: 1rem;
+    padding: var(--group-padding-top) var(--group-padding-left);
+}
+
+/* labels */
+.form-group input[type=text] ~ label,
+.form-group input[type=password] ~ label,
+.form-group input[type=number] ~ label,
+.form-group textarea ~ label {
+    text-transform: uppercase;
+    position: absolute;
+    pointer-events: none;
+    left: var(--group-padding-left);
+    user-select: none;
+}
+
+.form-group input[type=text] ~ label,
+.form-group input[type=password] ~ label,
+.form-group input[type=number] ~ label,
+.form-group textarea ~ label {
+    top: var(--group-padding-top);
+    transition: var(--transition-short);
+}
+
+.form-group input[data-role=input-number] ~ label {
+    top: 0 !important;
+    font-size: 1rem !important;
+}
+
+.form-group i ~ label {
+    left: calc(var(--group-padding-left) + var(--icon-min-size)) !important;
+}
+
+.form-group input[type=text]:focus ~ label,
+.form-group input[type=password]:focus ~ label,
+.form-group input[type=number]:focus ~ label,
+.form-group textarea:focus ~ label {
+    top: 0;
+    font-size: 0.7rem;
+}
+
+.active-label {
+    top: 0 !important;
+    font-size: 0.7rem !important;
+}
+
+/* common input css */
+.form-group input[type=text],
+.form-group input[type=password],
+.form-group input[type=number],
+.form-group textarea {
+    display: inline-block;
+    border: none;
+    cursor: text;
+    background: transparent;
+    width: 100%;
+}
+
+/* text fields */
+.form-group input[type=text],
+.form-group input[type=password],
+.form-group textarea {
+    border-bottom: 2px solid;
+    transition: var(--transition-short);
+    border-radius: var(--border-weight) var(--border-weight) 0 0;
+}
+
+/* textarea */
+.form-group textarea {
+    resize: none;
+    height: auto;
+    overflow: hidden;
+}
+
+/* input type number */
+.form-group input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.form-group input[data-role=input-number] {
+    border: 2px solid;
+    border-radius: var(--border-weight);
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+.form-group .plus-sign,
+.form-group .minus-sign {
+    display: inline;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.form-group input[data-role=input-number] ~ .minus-sign {
+    float: right;
+}
+
+@media only screen and (max-width: 576px) {
+    .form-group input[type=text],
+    .form-group input[type=password],
+    .form-group textarea {
+        display: block;
+        width: 100%;
+    }
+}
+
+.form-group input[type=text]:focus,
+.form-group input[type=password]:focus,
+.form-group input[type=number]:focus,
+.form-group textarea:focus {
+    outline: none;
+}
+
+/* input prefix */
+.form-group i,
+.form-group inp {
+    display: inline-block;
+    padding: 0.2rem;
+    min-width: var(--icon-min-size);
+    max-width: var(--icon-max-size);
+    user-select: none;
+}
+
+/* input primary */
+.form-group--primary {
+    color: var(--primary);
+}
+
+.form-group--primary input[type=text],
+.form-group--primary input[type=password],
+.form-group--primary input[type=number],
+.form-group--primary textarea {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* input secondary */
+.form-group--secondary {
+    color: var(--secondary);
+}
+
+.form-group--secondary input[type=text],
+.form-group--secondary input[type=password],
+.form-group--secondary input[type=number],
+.form-group--secondary textarea {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}

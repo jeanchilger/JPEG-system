@@ -1,0 +1,103 @@
+@import "_variables.css";
+
+/* calendar container */
+.calendar {
+    padding: 0.5rem;
+    position: relative;
+}
+
+/* calendar header (month and year) */
+.calendar__header {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1rem;
+    border-top-left-radius: var(--border-weight);
+    border-top-right-radius: var(--border-weight);
+}
+
+/* calendar body (days and weekdays) */
+.calendar__body {
+    border-bottom-left-radius: var(--border-weight);
+    border-bottom-right-radius: var(--border-weight);
+}
+
+/* remove standard li and ul styles */
+.calendar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* days and weekdays container */
+.calendar__days,
+.calendar__weekdays {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* day and weekday cell */
+.calendar__days li,
+.calendar__weekdays li {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% / 7);
+    max-width: calc(100% / 7);
+    text-align: center;
+    padding: 0.8rem;
+}
+
+.calendar__days li .active {
+    border-radius: calc(4 * var(--border-weight));
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+}
+
+.calendar__badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: calc(4 * var(--border-weight));
+    padding: 0.2rem 0.5rem;
+}
+
+/* calendar primary theming */
+.calendar--primary {
+    color: var(--secondary);
+}
+
+.calendar--primary .calendar__header,
+.calendar--primary .calendar__days li .active {
+    background-color: var(--primary);
+}
+
+.calendar--primary .calendar__body,
+.calendar--primary .calendar__badge {
+    background-color: var(--primary-lighter);
+}
+
+.calendar--primary .calendar__weekdays {
+    background-color: var(--primary-light);
+}
+
+
+/* calendar secondary theming */
+.calendar--secondary {
+    color: var(--primary);
+}
+
+.calendar--secondary .calendar__header,
+.calendar--secondary .calendar__days li .active {
+    background-color: var(--secondary);
+}
+
+.calendar--secondary .calendar__body,
+.calendar--secondary .calendar__badge {
+    background-color: var(--secondary-lighter);
+}
+
+.calendar--secondary .calendar__weekdays {
+    background-color: var(--secondary-light);
+}
