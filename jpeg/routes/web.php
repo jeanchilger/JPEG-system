@@ -11,9 +11,7 @@
 |
 */
 
-Route::get("/", function () {
-    return view("main");
-}) -> middleware("auth");;
+Route::get("/", "HomeController@index") -> name("home");
 
 Route::get("/login", function () {
     return view("login");
@@ -31,6 +29,4 @@ Route::get("/finances", function () {
     return view("finances");
 });
 
-Route::get("/finances", function () {
-    return view("finances");
-});
+Auth::routes();
