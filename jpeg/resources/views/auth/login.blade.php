@@ -45,7 +45,8 @@
             <div class="login-container col-12 col-sm-8 col-md-4 col-lg-4">
 
                 <h1>LOGO</h1>
-                <form action="" method="post">
+                <form method="post">
+                    @csrf
                     <!-- username field -->
                     <div class="form-group form-group--primary">
                         <i class="material-icons">email</i>
@@ -60,7 +61,9 @@
                         <label for="password">senha</label>
                     </div>
 
-                    <input type="submit" name="login" value="entrar" class="btn btn--primary--gradient">
+                    <button type="submit" name="login" class="btn btn--primary--gradient">
+                        entrar
+                    </button>
 
                 </form>
 
