@@ -45,19 +45,19 @@
             <div class="login-container col-12 col-sm-8 col-md-4 col-lg-4">
 
                 <h1>LOGO</h1>
-                <form method="post">
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <!-- username field -->
                     <div class="form-group form-group--primary">
                         <i class="material-icons">email</i>
-                        <input type="text" id="email">
+                        <input type="text" id="email" name="email">
                         <label for="email">e-mail</label>
                     </div>
 
                     <!-- password field -->
                     <div class="form-group form-group--primary">
                         <i class="material-icons">lock</i>
-                        <input type="password" id="password">
+                        <input type="password" id="password" name="password">
                         <label for="password">senha</label>
                     </div>
 

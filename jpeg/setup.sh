@@ -1,10 +1,40 @@
+RED='\033[0;31m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+#### install php
+echo -e "${RED}INSTALLING PHP${NC}"
+sudo apt install php7.2
+sudo apt install php7.2-cli
+
+sudo apt install php7.2-dev
+sudo apt install php7.2-mbstring
+sudo apt install php7.2-xml
+sudo apt install php7.2-mysql
+
+#### install composer
+echo -e "${RED}INSTALLING COMPOSER${NC}"
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+mv composer.phar /usr/local/bin/composer
+
+#### install mysql
+echo -e "${RED}INSTALLING MYSQL${NC}"
 sudo apt install mysql-client-core-5.7
 sudo apt install mysql-server
 sudo mysql_secure_installation utility
 
+## bd setup for this project
+echo -e "${WHITE}SETUP DATABASE${NC}"
 sudo mysql -u root < setupa.sql
 sudo mysql -u jpeg -p jpeg jpeg < setupb.sql
 
+#### project artisan setup
+echo -e "${RED}SETUP PROJECT ARTISAN CONFIG${NC}"
 php artisan key:generate
 
 echo '
@@ -54,4 +84,4 @@ MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ' > .env
 
-php atisan migrate
+php artisan migrate

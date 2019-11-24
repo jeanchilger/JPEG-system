@@ -1,4 +1,5 @@
 @extends("layouts.app")
+@extends("includes.sidemenu")
 
 @section("content")
 
@@ -16,7 +17,6 @@
             background-color: var(--secondary);
         }
     </style>
-
 
 
     <div class="container">

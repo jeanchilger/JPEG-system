@@ -13,6 +13,8 @@ const MONTH_NAMES = [
     "Dezembro",
 ];
 
+let events = 0;
+
 function initCalendar(calendar, month) {
     /*
      * Set calendar header, body, and other
@@ -20,8 +22,8 @@ function initCalendar(calendar, month) {
      * */
 
     calendar.innerHTML = `
-    <div class="calendar__badge">
-        4
+    <div class="calendar__badge" id="calendar-badge">
+
     </div>
 
     <div class="calendar__header" id="calendar-header">
@@ -64,32 +66,47 @@ function fillCalendarDays(maxDays, calendar) {
      * days for current days.
      * */
 
-
     for (let i = 0; i < maxDays; i++) {
-        if (i == 12 || i == 16 || i == 24 || i == 28) {
-            calendar.querySelector("#calendar-days").innerHTML += `
-            <li><span class=active>` + (i + 1) + `</span></li>
-            `;
-
-        } else {
-            calendar.querySelector("#calendar-days").innerHTML += `
-            <li>` + (i + 1) + `</li>
-            `;
-        }
+        calendar.querySelector("#calendar-days").innerHTML += `
+        <li id="day-` + (i + 1) + `">` + (i + 1) + `</li>
+        `;
     }
+}
+
+function insertEvent(eventDay) {
+    /*
+     * adds a visual fill in the given day.
+     * also increments the badge.
+     * */
+
+    let day = calendar.querySelector("#calendar-days")
+                      .querySelector("#day-" + eventDay);
+
+    day.innerHTML = `
+        <span class="active">` + eventDay + `</span>
+    `;
+
+    events += 1;
+    let badge = calendar.querySelector("#calendar-badge");
+
+    if (!events) {
+        badge.style.display = "block";
+    }
+
+    badge.innerHTML = events;
 }
 
 let calendar = document.getElementById("calendar");
 // calendar.onload = function () {
 
-    let currentDate = new Date();
-    let month = currentDate.getMonth();
-    let year = currentDate.getFullYear();
+let currentDate = new Date();
+let month = currentDate.getMonth();
+let year = currentDate.getFullYear();
 
-    let firstDay = new Date(year, month, 1).getDay();
-    let maxDays = new Date(year, month + 1, 0).getDate();
+let firstDay = new Date(year, month, 1).getDay();
+let maxDays = new Date(year, month + 1, 0).getDate();
 
-    initCalendar(calendar, month);
-    fillMissingDays(firstDay, calendar);
-    fillCalendarDays(maxDays, calendar);
+initCalendar(calendar, month);
+fillMissingDays(firstDay, calendar);
+fillCalendarDays(maxDays, calendar);
 // }
