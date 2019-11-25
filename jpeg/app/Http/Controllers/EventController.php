@@ -11,9 +11,17 @@ class EventController extends Controller
     public function show() {
         /*
          * Returns the view for schedule.
+         * Retrieves from database the events
+         * scheduled for the current month.
          * */
 
-        return view("schedule");
+        $currentDate = Carbon::now();
+
+        $events = Event::all();
+
+        return view("schedule", [
+            "events" => $events
+        ]);
     }
 
     public function store(Request $request) {

@@ -67,7 +67,6 @@
     </div>
 
 
-
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
@@ -93,26 +92,21 @@
                     <i class="material-icons prefix">school</i>
                     <h1 class="title"> Eventos futuros </h1>
                 </div>
-
                 <div class="collapsible collapsible--primary" id="collapsible">
-                    <div class="collapsible__item">
-                        <div class="collapsible__header">
-                            <i class="material-icons prefix">school</i>
-                            Formatura Psicologia
+                    @foreach($events as $event)
+
+                        <div class="collapsible__item">
+                            <div class="collapsible__header">
+                                <i class="material-icons prefix">school</i>
+                                {{ $event -> name }}
+                            </div>
+                            <div class="collapsible__body">
+                                <p>{{ $event -> location }}</p>
+                                <p>{{ $event -> date }} {{ $event -> time }}</p>
+                            </div>
                         </div>
-                        <div class="collapsible__body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                    <div class="collapsible__item">
-                        <div class="collapsible__header">
-                            <i class="material-icons prefix">school</i>
-                            Formatura Eng. Civil
-                        </div>
-                        <div class="collapsible__body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
