@@ -71,4 +71,18 @@
 
     <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
 
+    <script type="text/javascript">
+        var calendar = new Calendar();
+
+        let currentDate = new Date();
+        let month = currentDate.getMonth();
+        let year = currentDate.getFullYear();
+
+        let firstDay = new Date(year, month, 1).getDay();
+        let maxDays = new Date(year, month + 1, 0).getDate();
+
+        calendar.fillMissingDays(firstDay);
+        calendar.fillCalendarDays(maxDays);
+    </script>
+
 @endsection

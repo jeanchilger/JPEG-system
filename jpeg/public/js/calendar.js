@@ -13,15 +13,19 @@ const MONTH_NAMES = [
     "Dezembro",
 ];
 
-let events = 0;
+var Calendar = function() {
+    this.calendar = document.getElementById("calendar");
+    this.events = 0;
 
-function initCalendar(calendar, month) {
     /*
      * Set calendar header, body, and other
      * fixed calendar elements.
      * */
 
-    calendar.innerHTML = `
+    let currentDate = new Date();
+    let month = currentDate.getMonth();
+
+    this.calendar.innerHTML = `
     <div class="calendar__badge" id="calendar-badge">
 
     </div>
@@ -47,66 +51,59 @@ function initCalendar(calendar, month) {
     `;
 }
 
-function fillMissingDays(missingDays, calendar) {
+Calendar.prototype.fillMissingDays = function (missingDays) {
     /*
      * fills the cells of calendar that do not contain
      * days for current month.
      * */
 
     for (let i=0; i < missingDays; i++) {
-        calendar.querySelector("#calendar-days").innerHTML += `
-        <li></li>
+        this.calendar.querySelector("#calendar-days").innerHTML += `
+            <li></li>
         `;
     }
 }
 
-function fillCalendarDays(maxDays, calendar) {
+Calendar.prototype.fillCalendarDays = function (maxDays) {
     /*
      * fills the cells of calendar with month
      * days for current days.
      * */
 
     for (let i = 0; i < maxDays; i++) {
-        calendar.querySelector("#calendar-days").innerHTML += `
-        <li id="day-` + (i + 1) + `">` + (i + 1) + `</li>
-        `;
+        if (i < 10) {
+            this.calendar.querySelector("#calendar-days").innerHTML += `
+                <li id="day-0` + (i + 1) + `">` + (i + 1) + `</li>
+            `;
+
+        } else {
+            this.calendar.querySelector("#calendar-days").innerHTML += `
+                <li id="day-` + (i + 1) + `">` + (i + 1) + `</li>
+            `;
+        }
     }
 }
 
-function insertEvent(eventDay) {
+Calendar.prototype.insertEvent = function (eventDate) {
     /*
      * adds a visual fill in the given day.
      * also increments the badge.
      * */
 
-    let day = calendar.querySelector("#calendar-days")
+    let eventDay = eventDate.split("-")[2];
+    let day = this.calendar.querySelector("#calendar-days")
                       .querySelector("#day-" + eventDay);
 
     day.innerHTML = `
-        <span class="active">` + eventDay + `</span>
+        <span class="active">` + day.innerHTML + `</span>
     `;
 
-    events += 1;
-    let badge = calendar.querySelector("#calendar-badge");
+    this.events += 1;
+    let badge = this.calendar.querySelector("#calendar-badge");
 
-    if (!events) {
+    if (this.events) {
         badge.style.display = "block";
     }
 
-    badge.innerHTML = events;
+    badge.innerHTML = this.events;
 }
-
-let calendar = document.getElementById("calendar");
-// calendar.onload = function () {
-
-let currentDate = new Date();
-let month = currentDate.getMonth();
-let year = currentDate.getFullYear();
-
-let firstDay = new Date(year, month, 1).getDay();
-let maxDays = new Date(year, month + 1, 0).getDate();
-
-initCalendar(calendar, month);
-fillMissingDays(firstDay, calendar);
-fillCalendarDays(maxDays, calendar);
-// }

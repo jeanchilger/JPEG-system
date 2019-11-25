@@ -2,6 +2,7 @@
 
 @section("content")
 
+    <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
     <style media="screen">
         .row:not(:first-child) {
             margin-top: 2rem;
@@ -86,6 +87,20 @@
             </div>
         </div>
 
+        <script type="text/javascript">
+            var calendar = new Calendar();
+
+            let currentDate = new Date();
+            let month = currentDate.getMonth();
+            let year = currentDate.getFullYear();
+
+            let firstDay = new Date(year, month, 1).getDay();
+            let maxDays = new Date(year, month + 1, 0).getDate();
+
+            calendar.fillMissingDays(firstDay);
+            calendar.fillCalendarDays(maxDays);
+        </script>
+
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
 
@@ -95,24 +110,22 @@
                 </div>
 
                 <div class="collapsible collapsible--primary" id="collapsible">
-                    <div class="collapsible__item">
-                        <div class="collapsible__header">
-                            <i class="material-icons prefix">school</i>
-                            Formatura Psicologia
+                    @foreach($events as $event)
+                        <div class="collapsible__item">
+                            <div class="collapsible__header">
+                                <i class="material-icons prefix">school</i>
+                                {{ $event -> name }}
+                            </div>
+                            <div class="collapsible__body">
+                                <p>{{ $event -> location }}</p>
+                                <p>{{ $event -> date }}</p>
+                            </div>
                         </div>
-                        <div class="collapsible__body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                    <div class="collapsible__item">
-                        <div class="collapsible__header">
-                            <i class="material-icons prefix">school</i>
-                            Formatura Eng. Civil
-                        </div>
-                        <div class="collapsible__body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
+
+                        <script type="text/javascript">
+                            calendar.insertEvent("{{ $event -> date }}");
+                        </script>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -124,7 +137,7 @@
 
     <script src="{{ asset('js/forms.js') }}" charset="utf-8"></script>
     <script src="{{ asset('js/modal.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
+
     <script src="{{ asset('js/collapsible.js') }}" charset="utf-8"></script>
 
 @endsection
