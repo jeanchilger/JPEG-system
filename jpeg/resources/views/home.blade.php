@@ -18,6 +18,7 @@
         }
     </style>
 
+    <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
 
     <div class="container">
         <!-- Finanças -->
@@ -65,24 +66,31 @@
                 <div class="calendar calendar--primary" id="calendar">
                 </div>
 
+                <script type="text/javascript">
+                    var calendar = new Calendar();
+
+                    let currentDate = new Date();
+                    let month = currentDate.getMonth();
+                    let year = currentDate.getFullYear();
+
+                    let firstDay = new Date(year, month, 1).getDay();
+                    let maxDays = new Date(year, month + 1, 0).getDate();
+
+                    calendar.fillMissingDays(firstDay);
+                    calendar.fillCalendarDays(maxDays);
+                </script>
+
+                @foreach($events as $event)
+                    <script type="text/javascript">
+                        calendar.insertEvent("{{ $event -> date }}");
+                    </script>
+                @endforeach
+
             </div>
         </div>
     </div>
 
-    <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
 
-    <script type="text/javascript">
-        var calendar = new Calendar();
 
-        let currentDate = new Date();
-        let month = currentDate.getMonth();
-        let year = currentDate.getFullYear();
-
-        let firstDay = new Date(year, month, 1).getDay();
-        let maxDays = new Date(year, month + 1, 0).getDate();
-
-        calendar.fillMissingDays(firstDay);
-        calendar.fillCalendarDays(maxDays);
-    </script>
 
 @endsection

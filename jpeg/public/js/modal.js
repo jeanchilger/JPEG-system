@@ -56,11 +56,14 @@ function openModal() {
 
 document.querySelectorAll("[data-role=modal-trigger]").forEach(function (e) {
     e.onclick = function () {
+        let modalId = e.getAttribute("modal-name");
+        MODAL = document.getElementById(modalId);
         openModal();
     }
 });
 
 let modalTrigger = document.getElementById("modal-trigger");
+
 if (modalTrigger) {
     modalTrigger.onclick = function () {
         openModal();

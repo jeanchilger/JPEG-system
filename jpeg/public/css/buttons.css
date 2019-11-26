@@ -46,13 +46,19 @@
     float: right;
 }
 
+/* button with 100% width */
+.btn--full {
+    display: inline-block;
+    width: 100% !important;
+    /* height: 40%; */
+    line-height: 200%;
+}
+
 /* primary button */
 .btn--primary {
     background: var(--primary);
     color: var(--secondary);
 }
-
-/* TODO: create a variable for lighten and darken */
 
 /* secondary button */
 .btn--secondary {

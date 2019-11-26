@@ -11,10 +11,6 @@
 |
 */
 
-Route::get("/", function () {
-    return view("home");
-
-}) -> middleware("auth");
 
 Route::get("/login", function () {
     return view("login");
@@ -53,10 +49,18 @@ Route::get("/clients/payment", function () {
     return view("payment");
 });
 
-// finances overview
+// finances
 Route::get("/finances", function () {
     return view("finances");
+
 }) -> name("finances");
+
+Route::post("/finances/expenses", "ExpenseController@store") -> name("expense.store");
+
+Route::post("/finances/receipts", "ReceiptController@store") -> name("receipt.store");
+
+// home
+Route::get("/", "HomeController@index") -> name("home");
 
 // schedule management
 Route::get("/schedule", "EventController@show") -> name("schedule");

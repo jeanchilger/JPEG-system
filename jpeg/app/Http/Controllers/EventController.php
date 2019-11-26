@@ -13,11 +13,7 @@ class EventController extends Controller
          * Returns the view for schedule.
          * */
 
-        $startDate = Carbon::now() -> addWeeks(-2) -> format('Y-m-d');
-        $endDate = Carbon::now() -> addWeeks(2) -> format('Y-m-d');
-
-        $events = Event::all() -> where("date", ">=", $startDate)
-                               -> where("date", "<=", $endDate);
+        $events = Event::getNextEvents();
 
         return view("schedule", [
             "events" => $events
@@ -33,8 +29,8 @@ class EventController extends Controller
         $event = new Event();
 
         $event -> name = $request -> name;
-        $event -> date = Carbon::createFromFormat('d/m/Y', $request->date)
-                            ->format('Y-m-d');
+        $event -> date = Carbon::createFromFormat("d/m/Y", $request->date)
+                            ->format("Y-m-d");
         $event -> time = $request -> time;
         $event -> location = $request -> location;
         $event -> people = $request -> people;
