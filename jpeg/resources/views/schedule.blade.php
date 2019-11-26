@@ -2,6 +2,7 @@
 
 @section("content")
 
+    <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
     <style media="screen">
         .row:not(:first-child) {
             margin-top: 2rem;
@@ -85,6 +86,20 @@
             </div>
         </div>
 
+        <script type="text/javascript">
+            var calendar = new Calendar();
+
+            let currentDate = new Date();
+            let month = currentDate.getMonth();
+            let year = currentDate.getFullYear();
+
+            let firstDay = new Date(year, month, 1).getDay();
+            let maxDays = new Date(year, month + 1, 0).getDate();
+
+            calendar.fillMissingDays(firstDay);
+            calendar.fillCalendarDays(maxDays);
+        </script>
+
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
 
@@ -94,7 +109,6 @@
                 </div>
                 <div class="collapsible collapsible--primary" id="collapsible">
                     @foreach($events as $event)
-
                         <div class="collapsible__item">
                             <div class="collapsible__header">
                                 <i class="material-icons prefix">school</i>
@@ -102,11 +116,14 @@
                             </div>
                             <div class="collapsible__body">
                                 <p>{{ $event -> location }}</p>
-                                <p>{{ $event -> date }} {{ $event -> time }}</p>
+                                <p>{{ $event -> date }}</p>
                             </div>
                         </div>
-                    @endforeach
 
+                        <script type="text/javascript">
+                            calendar.insertEvent("{{ $event -> date }}");
+                        </script>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -118,7 +135,7 @@
 
     <script src="{{ asset('js/forms.js') }}" charset="utf-8"></script>
     <script src="{{ asset('js/modal.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
+
     <script src="{{ asset('js/collapsible.js') }}" charset="utf-8"></script>
 
 @endsection

@@ -15,9 +15,11 @@ class EventController extends Controller
          * scheduled for the current month.
          * */
 
-        $currentDate = Carbon::now();
+        $startDate = Carbon::now() -> addWeeks(-2) -> format('Y-m-d');
+        $endDate = Carbon::now() -> addWeeks(2) -> format('Y-m-d');
 
-        $events = Event::all();
+        $events = Event::all() -> where("date", ">=", $startDate)
+                               -> where("date", "<=", $endDate);
 
         return view("schedule", [
             "events" => $events
