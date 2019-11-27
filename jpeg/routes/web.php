@@ -11,8 +11,6 @@
 |
 */
 
-use App\Expense;
-
 Route::get("/login", function () {
     return view("login");
 });
@@ -51,12 +49,7 @@ Route::get("/clients/payment", function () {
 });
 
 // finances
-Route::get("/finances", function () {
-    return view("finances", [
-        "totalExpenses" => Expense::getTotalValue()
-    ]);
-
-}) -> name("finances");
+Route::get("/finances", "FinancesController@index") -> name("finances");
 
 Route::post("/finances/expenses", "ExpenseController@store") -> name("expense.store");
 

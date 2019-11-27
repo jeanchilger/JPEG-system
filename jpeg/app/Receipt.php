@@ -8,11 +8,11 @@ class Receipt extends Model
 {
     //
     public static function getTotalValue() {
-        $expenses = Expense::all();
+        $receipts = Receipt::all();
         $total = 0;
 
-        foreach ($expenses as $expense) {
-            $total += $expense -> value;
+        foreach ($receipts as $receipt) {
+            $total += $receipt -> value;
         }
 
         return $total;

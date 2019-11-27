@@ -28,7 +28,8 @@
                     <i class="material-icons prefix">trending_up</i>
                     <h1 class="title"> Finanças </h1>
                 </div>
-                <!-- <img src="frontend/assets/img/chart.png" alt="Os gráficos serão gerados utilizando framework"> -->
+
+                <canvas id="chart" width="300" height="300"></canvas>
             </div>
         </div>
         <!-- Próximos pagamentos -->

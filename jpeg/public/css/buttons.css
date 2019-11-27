@@ -23,7 +23,6 @@
 
     text-align: center!important;
     cursor: pointer;
-
 }
 
 /* button icon */
@@ -56,6 +55,8 @@
 /* button suffix */
 .btn .btn__suffix {
     float: right;
+    line-height: 125%;
+
 }
 
 /* primary button */

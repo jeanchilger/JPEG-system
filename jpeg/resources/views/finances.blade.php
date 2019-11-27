@@ -127,7 +127,8 @@
                 <a class="btn btn--secondary btn--full text-left">
                     Recebimentos
                     <!-- <i class="material-icons suffix--not-clickable">chevron_right</i> -->
-                    <div class="suffix">
+                    <div class="btn__suffix">
+                        R$ {{ $totalReceipts }},00
                     </div>
                 </a>
             </div>
@@ -135,15 +136,15 @@
 
         <div class="row">
             <div class="col-md-4 offset-md-2">
-                <a class="btn btn--secondary btn--full" data-role="modal-trigger" modal-name="modal-expense">
-                    <span>NOVO GASTO</span>
-                    <i class="material-icons suffix--not-clickable">chevron_right</i>
+                <a class="btn btn--secondary btn--full text-left" data-role="modal-trigger" modal-name="modal-expense">
+                    NOVO GASTO
+                    <i class="material-icons btn__suffix">add</i>
                 </a>
             </div>
             <div class="col-md-4">
-                <a class="btn btn--secondary btn--full" data-role="modal-trigger" modal-name="modal-receipt">
-                    <span>NOVO RECEBIMENTO</span>
-                    <i class="material-icons suffix--not-clickable">chevron_right</i>
+                <a class="btn btn--secondary btn--full text-left" data-role="modal-trigger" modal-name="modal-receipt">
+                    NOVO RECEBIMENTO
+                    <i class="material-icons btn__suffix">add</i>
                 </a>
             </div>
 
