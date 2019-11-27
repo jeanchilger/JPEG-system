@@ -8,14 +8,7 @@ use Carbon\Carbon;
 
 class ExpenseController extends Controller
 {
-    public function show() {
-        /*
-         * Returns the view for finances.
-         * */
-
-        return view("finances");
-    }
-
+    //
     public function store(Request $request) {
         /*
          * Stores in the database a
@@ -27,7 +20,7 @@ class ExpenseController extends Controller
 
         $expense -> value = $request -> value;
         $expense -> date = Carbon::createFromFormat("d/m/Y", $request->date)
-                            ->format("Y-m-d");
+                            -> format("Y-m-d");
         $expense -> category = $request -> category;
         $expense -> description = $request -> description;
 

@@ -50,8 +50,12 @@
 .btn--full {
     display: inline-block;
     width: 100% !important;
-    /* height: 40%; */
     line-height: 200%;
+}
+
+/* button suffix */
+.btn .btn__suffix {
+    float: right;
 }
 
 /* primary button */
