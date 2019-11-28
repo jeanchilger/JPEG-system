@@ -71,4 +71,7 @@
         </div>
     </div>
 
+
+    <script src="{{ asset('js/forms.js') }}" charset="utf-8"></script>
+
 @endsection

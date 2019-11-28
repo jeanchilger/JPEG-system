@@ -10,7 +10,7 @@ class FinancesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this -> middleware('auth');
     }
 
     public function index() {
@@ -18,6 +18,8 @@ class FinancesController extends Controller
          * Returns the view for finances,
          * with necessaries values.
          * */
+
+        Expense::getTotalPerWeek();
 
         return view("finances", [
             "totalExpenses" => Expense::getTotalValue(),

@@ -19,6 +19,9 @@
     </style>
 
     <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('js/profit-chart.js') }}" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    
 
     <div class="container">
         <!-- Finanças -->
@@ -29,7 +32,11 @@
                     <h1 class="title"> Finanças </h1>
                 </div>
 
-                <canvas id="chart" width="300" height="300"></canvas>
+                <canvas id="profitChart"></canvas>
+                <script type="text/javascript">
+                    let profitChart = new ProfitChart("profitChart");
+                    profitChart.buildChart();
+                </script>
             </div>
         </div>
         <!-- Próximos pagamentos -->
@@ -90,8 +97,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 @endsection
