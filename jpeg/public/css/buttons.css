@@ -23,7 +23,6 @@
 
     text-align: center!important;
     cursor: pointer;
-
 }
 
 /* button icon */
@@ -46,13 +45,25 @@
     float: right;
 }
 
+/* button with 100% width */
+.btn--full {
+    display: inline-block;
+    width: 100% !important;
+    line-height: 200%;
+}
+
+/* button suffix */
+.btn .btn__suffix {
+    float: right;
+    line-height: 125%;
+
+}
+
 /* primary button */
 .btn--primary {
     background: var(--primary);
     color: var(--secondary);
 }
-
-/* TODO: create a variable for lighten and darken */
 
 /* secondary button */
 .btn--secondary {

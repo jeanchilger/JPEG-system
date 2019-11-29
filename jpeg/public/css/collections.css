@@ -47,6 +47,12 @@
     user-select: none;
 }
 
+/* collection item suffix that is not clickable */
+.collection__item .suffix--not-clickable {
+    float: right;
+    user-select: none;
+}
+
 /* collection item prefix */
 .collection__item .prefix {
     float: left;

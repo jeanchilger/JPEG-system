@@ -25,7 +25,11 @@
 
 /* positioning */
 .text-center {
-    text-align: center;
+    text-align: center!important;
+}
+
+.text-left {
+    text-align: left!important;
 }
 
 /* text primary theming */
