@@ -1,3 +1,8 @@
+let COLOR_PRIMARY = getComputedStyle(document.body).getPropertyValue("--primary");
+let COLOR_PRIMARY_LIGHT = getComputedStyle(document.body).getPropertyValue("--primary-light");
+let COLOR_PRIMARY_LIGHTER = getComputedStyle(document.body).getPropertyValue("--primary-lighter");
+let COLOR_SECONDARY = getComputedStyle(document.body).getPropertyValue("--secondary");
+
 function ProfitChart(canvasId) {
     /*
      * Utility object used to create a chart
@@ -9,42 +14,245 @@ function ProfitChart(canvasId) {
 
     this.canvasId = canvasId;
     this.canvas = document.getElementById(canvasId);
+    this.options = {
+        legend: {
+            labels: {
+                fontColor: COLOR_PRIMARY_LIGHTER,
+                fontSize: 13,
+                fontFamily: "Roboto",
 
-    this.buildChart = function() {
+                filter: function(item, chart) {
+                    return !item.text.includes("indicator");
+                }
+            }
+        },
+
+        tooltips: {
+            mode: "nearest",
+            intersect: false,
+        },
+
+        hover: {
+			mode: "nearest",
+			intersect: true
+		},
+
+        responsive: true,
+
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        color: COLOR_SECONDARY,
+                    },
+
+                    ticks: {
+                        fontColor: COLOR_PRIMARY_LIGHT,
+                        fontSize: 13,
+                        fontFamily: "Roboto",
+                    },
+
+                }
+            ],
+
+            yAxes: [
+                {
+                    gridLines: {
+                        color: COLOR_SECONDARY,
+                    },
+
+                    ticks: {
+                        fontColor: COLOR_PRIMARY_LIGHT,
+                        fontSize: 13,
+                        fontFamily: "Roboto",
+                    },
+
+
+                }
+            ]
+        }
+
+    };
+
+    this.buildChart = function(data) {
         /*
          * Builds a chart.
          * */
 
         this.chart = new Chart(this.canvas, {
-            type: "bar",
+            type: "line",
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
+                labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
+                datasets: [
+                    {
+                        label: "Valor em Caixa",
 
-                    data: [12, 19, 3, 5, 2, 3],
+                        data: data,
 
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
+                        backgroundColor: [
+                            COLOR_PRIMARY,
+                        ],
 
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                        borderColor: [
+                            COLOR_PRIMARY,
+                        ],
 
-                    borderWidth: 1
-                }]
+                        borderWidth: 2,
+
+                        fill: false,
+
+                        pointBackgroundColor: COLOR_PRIMARY,
+
+                        pointBorderWidth: 1,
+
+                        lineTension: 0,
+
+                        pointRadius: 4,
+
+                    },
+                    {
+                        label: "indicator",
+
+                        data: [0, 0, 0, 0],
+
+                        backgroundColor: [
+                            "rgb(200, 31, 15)",
+                        ],
+
+                        borderColor: [
+                            "rgb(200, 31, 15)",
+                        ],
+
+                        borderWidth: 2,
+
+                        fill: false,
+
+                        pointBackgroundColor: "rgb(200, 31, 15)",
+
+                    }
+                ]
             },
+
+            options: this.options,
+
         });
     }
 }
+
+// type: 'line',
+// data: {
+//     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//     datasets: [{
+//         label: 'My First dataset',
+//         backgroundColor: 'red',
+//         borderColor: 'red',
+//         data: [
+//             40, 1, 34, 67, 12, 89, 12, 54, 19, 21
+//         ],
+//         fill: false,
+//     }]
+// },
+// options: {
+//     responsive: true,
+//     title: {
+//         display: true,
+//         text: 'Chart.js Line Chart'
+//     },
+//     tooltips: {
+//         mode: 'index',
+//         intersect: false,
+//     },
+//     hover: {
+//         mode: 'nearest',
+//         intersect: true
+//     },
+//     scales: {
+//         xAxes: [{
+//             display: true,
+//             scaleLabel: {
+//                 display: true,
+//                 labelString: 'Month'
+//             }
+//         }],
+//         yAxes: [{
+//             display: true,
+//             scaleLabel: {
+//                 display: true,
+//                 labelString: 'Value'
+//             }
+//         }]
+//     }
+// }
+
+// var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+// var config = {
+// 	type: 'line',
+// 	data: {
+// 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+// 		datasets: [{
+// 			label: 'My First dataset',
+// 			backgroundColor: window.chartColors.red,
+// 			borderColor: window.chartColors.red,
+// 			data: [
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor()
+// 			],
+// 			fill: false,
+// 		}, {
+// 			label: 'My Second dataset',
+// 			fill: false,
+// 			backgroundColor: window.chartColors.blue,
+// 			borderColor: window.chartColors.blue,
+// 			data: [
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor(),
+// 				randomScalingFactor()
+// 			],
+// 		}]
+// 	},
+// 	options: {
+// 		responsive: true,
+// 		title: {
+// 			display: true,
+// 			text: 'Chart.js Line Chart'
+// 		},
+// 		tooltips: {
+// 			mode: 'index',
+// 			intersect: false,
+// 		},
+// 		hover: {
+// 			mode: 'nearest',
+// 			intersect: true
+// 		},
+// 		scales: {
+// 			xAxes: [{
+// 				display: true,
+// 				scaleLabel: {
+// 					display: true,
+// 					labelString: 'Month'
+// 				}
+// 			}],
+// 			yAxes: [{
+// 				display: true,
+// 				scaleLabel: {
+// 					display: true,
+// 					labelString: 'Value'
+// 				}
+// 			}]
+// 		}
+// 	}
+// };
+//
+// window.onload = function() {
+// 	var ctx = document.getElementById('canvas').getContext('2d');
+// 	window.myLine = new Chart(ctx, config);
+// };

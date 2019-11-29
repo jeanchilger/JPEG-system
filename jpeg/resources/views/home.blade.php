@@ -19,9 +19,9 @@
     </style>
 
     <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('js/profit-chart.js') }}" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    
+    <script src="{{ asset('js/profit-chart.js') }}" charset="utf-8"></script>
+
 
     <div class="container">
         <!-- Finanças -->

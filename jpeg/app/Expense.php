@@ -44,11 +44,21 @@ class Expense extends Model
 
         $totalPerWeek = array();
 
+
         while ($endDate -> gte($startDate)) {
+            $total = 0;
             $expenses = Expense::all() -> where("date", ">=", $startDate)
                                        -> where("date", "<=", $startDate -> addWeek());
-            // dd($startDate);
+
+            foreach ($expenses as $expense) {
+                $total += $expense -> value;
+            }
+
+            array_push($totalPerWeek, $total);
         }
+
+        dd($totalPerWeek);
+        return $totalPerWeek;
 
     }
 }

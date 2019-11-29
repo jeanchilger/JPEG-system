@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Expense;
+use App\Receipt;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        Expense::getTotalPerWeek();
+        
         return view("home", [
             "events" => Event::getNextEvents()
         ]);
