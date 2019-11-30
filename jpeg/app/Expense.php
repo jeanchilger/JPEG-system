@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
+use Illuminate\Console\Command;
 
 class Expense extends Model
 {
@@ -35,18 +37,20 @@ class Expense extends Model
          * */
 
         if (!$startDate) {
-            $startDate = Carbon::now() -> firstOfMonth();
+            $startDate = CarbonImmutable::now() -> firstOfMonth();
         }
 
         if (!$endDate) {
-            $endDate = Carbon::now();
+            $endDate = CarbonImmutable::now();
         }
 
         $totalPerWeek = array();
 
-
-        while ($endDate -> gte($startDate)) {
+        print_r("END: " . $endDate. "<br>");
+        while ($startDate -> lt($endDate)) {
+            print_r($startDate . "<br>");
             $total = 0;
+            $date = $startDate -> format("d/m/Y");
             $expenses = Expense::all() -> where("date", ">=", $startDate)
                                        -> where("date", "<=", $startDate -> addWeek());
 
@@ -54,10 +58,12 @@ class Expense extends Model
                 $total += $expense -> value;
             }
 
-            array_push($totalPerWeek, $total);
+            array_push($totalPerWeek, array("total" => $total,
+                                            "startDate" => $date,
+                                            "endDate" => $startDate -> format("d/m/Y")
+                                        ));
         }
 
-        dd($totalPerWeek);
         return $totalPerWeek;
 
     }

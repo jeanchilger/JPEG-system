@@ -35,7 +35,7 @@
                 <canvas id="profitChart"></canvas>
                 <script type="text/javascript">
                     let profitChart = new ProfitChart("profitChart");
-                    profitChart.buildChart();
+                    profitChart.buildChart(@json($expensesPerWeek), @json($receiptsPerWeek));
                 </script>
             </div>
         </div>

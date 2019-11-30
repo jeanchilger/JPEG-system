@@ -1,6 +1,10 @@
 let COLOR_PRIMARY = getComputedStyle(document.body).getPropertyValue("--primary");
 let COLOR_PRIMARY_LIGHT = getComputedStyle(document.body).getPropertyValue("--primary-light");
 let COLOR_PRIMARY_LIGHTER = getComputedStyle(document.body).getPropertyValue("--primary-lighter");
+
+let COLOR_DANGER = getComputedStyle(document.body).getPropertyValue("--danger");
+let COLOR_SUCCESS = getComputedStyle(document.body).getPropertyValue("--success");
+
 let COLOR_SECONDARY = getComputedStyle(document.body).getPropertyValue("--secondary");
 
 function ProfitChart(canvasId) {
@@ -22,7 +26,7 @@ function ProfitChart(canvasId) {
                 fontFamily: "Roboto",
 
                 filter: function(item, chart) {
-                    return !item.text.includes("indicator");
+                    return !item.text.includes("Limite de Segurança");
                 }
             }
         },
@@ -30,6 +34,11 @@ function ProfitChart(canvasId) {
         tooltips: {
             mode: "nearest",
             intersect: false,
+            filter: function (tooltipItem, data) {
+                tooltipItem.value = "R$ " + Math.abs(parseInt(tooltipItem.value)).toFixed(2);
+
+                return true;
+            }
         },
 
         hover: {
@@ -71,65 +80,176 @@ function ProfitChart(canvasId) {
                 }
             ]
         }
-
     };
 
-    this.buildChart = function(data) {
+    this.datasetBase = {
+
+        borderWidth: 2,
+
+        fill: false,
+
+        pointBorderWidth: 1,
+
+        lineTension: 0,
+
+        pointRadius: 4,
+    };
+
+    this.calculateData = function(dataExpenses, dataReceipts) {
+        /*
+         * Calculates the array coresponding
+         * to the profit (or loss).
+         * */
+
+        let dataCalculated = [];
+
+        for (var i = 0; i < Object.keys(dataExpenses).length; i++) {
+            dataCalculated[i] = dataReceipts[i].total - dataExpenses[i].total;
+        }
+
+        console.log(dataCalculated);
+        return dataCalculated;
+    }
+
+    this.formatData = function(dataObj) {
+        /*
+         * Formats the dataObj in the form
+         * of a array.
+         * */
+
+        let dataArray = [];
+
+        for (var i = 0; i < Object.keys(dataObj).length; i++) {
+            dataArray[i] = dataObj[i].total;
+        }
+
+        return dataArray;
+    }
+
+    this.formatDataExpenses = function(dataExpenses) {
+        /*
+         * Sets every value within dataExpenses
+         * to a negative value.
+         * */
+
+        let newDataExpenses = [];
+
+        for (var i = 0; i < Object.keys(dataExpenses).length; i++) {
+            newDataExpenses[i] = -1 * dataExpenses[i];
+        }
+
+        return newDataExpenses;
+    }
+
+    this.buildDataLabels = function(dataObj) {
+        /*
+         * Builds the labels for y axis.
+         * */
+
+        let dataLabels = [];
+
+        for (var i = 0; i < Object.keys(dataObj).length; i++) {
+            dataLabels[i] = "(" + dataObj[i].startDate + " - " + dataObj[i].endDate + ")";
+        }
+
+        return dataLabels;
+    }
+
+    this.buildChart = function(dataExpenses, dataReceipts) {
         /*
          * Builds a chart.
          * */
 
+        this.dataExpenses = this.formatDataExpenses(this.formatData(dataExpenses));
+        this.dataReceipts = this.formatData(dataReceipts);
+        this.dataCalculated = this.calculateData(dataExpenses, dataReceipts);
+        this.dataLabels = this.buildDataLabels(dataExpenses);
+
         this.chart = new Chart(this.canvas, {
             type: "line",
             data: {
-                labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
+                labels: this.dataLabels,
                 datasets: [
+                    //calculated value for profit or loss
                     {
-                        label: "Valor em Caixa",
+                        ...this.datasetBase, ...{
+                            label: "Valor em Caixa",
 
-                        data: data,
+                            data: this.dataCalculated,
 
-                        backgroundColor: [
-                            COLOR_PRIMARY,
-                        ],
+                            backgroundColor: [
+                                COLOR_PRIMARY,
+                            ],
 
-                        borderColor: [
-                            COLOR_PRIMARY,
-                        ],
+                            borderColor: [
+                                COLOR_PRIMARY,
+                            ],
 
-                        borderWidth: 2,
+                            pointBackgroundColor: COLOR_PRIMARY,
 
-                        fill: false,
-
-                        pointBackgroundColor: COLOR_PRIMARY,
-
-                        pointBorderWidth: 1,
-
-                        lineTension: 0,
-
-                        pointRadius: 4,
-
+                        }
                     },
+
+                    // dataset for receipts
                     {
-                        label: "indicator",
+                        ...this.datasetBase, ...{
+                            label: "Recebimentos",
 
-                        data: [0, 0, 0, 0],
+                            data: this.dataReceipts,
 
-                        backgroundColor: [
-                            "rgb(200, 31, 15)",
-                        ],
+                            backgroundColor: [
+                                COLOR_SUCCESS,
+                            ],
 
-                        borderColor: [
-                            "rgb(200, 31, 15)",
-                        ],
+                            borderColor: [
+                                COLOR_SUCCESS,
+                            ],
 
-                        borderWidth: 2,
+                            pointBackgroundColor: COLOR_SUCCESS,
 
-                        fill: false,
+                        }
+                    },
 
-                        pointBackgroundColor: "rgb(200, 31, 15)",
+                    // dataset for expenses
+                    {
+                        ...this.datasetBase, ...{
+                            label: "Despesas",
 
-                    }
+                            data: this.dataExpenses,
+
+                            backgroundColor: [
+                                COLOR_DANGER,
+                            ],
+
+                            borderColor: [
+                                COLOR_DANGER,
+                            ],
+
+                            pointBackgroundColor: COLOR_DANGER,
+
+                        }
+                    },
+
+                    // indicates the limit where there is neither profit nor loss
+                    {
+                        ...this.datasetBase, ...{
+                            label: "Limite de Segurança",
+
+                            data: [0, 0, 0, 0],
+
+                            backgroundColor: [
+                                COLOR_PRIMARY_LIGHT,
+                            ],
+
+                            borderColor: [
+                                COLOR_PRIMARY_LIGHT,
+                            ],
+
+                            pointBackgroundColor: COLOR_PRIMARY_LIGHT,
+
+                        }
+                    },
+
                 ]
             },
 
@@ -138,121 +258,3 @@ function ProfitChart(canvasId) {
         });
     }
 }
-
-// type: 'line',
-// data: {
-//     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//     datasets: [{
-//         label: 'My First dataset',
-//         backgroundColor: 'red',
-//         borderColor: 'red',
-//         data: [
-//             40, 1, 34, 67, 12, 89, 12, 54, 19, 21
-//         ],
-//         fill: false,
-//     }]
-// },
-// options: {
-//     responsive: true,
-//     title: {
-//         display: true,
-//         text: 'Chart.js Line Chart'
-//     },
-//     tooltips: {
-//         mode: 'index',
-//         intersect: false,
-//     },
-//     hover: {
-//         mode: 'nearest',
-//         intersect: true
-//     },
-//     scales: {
-//         xAxes: [{
-//             display: true,
-//             scaleLabel: {
-//                 display: true,
-//                 labelString: 'Month'
-//             }
-//         }],
-//         yAxes: [{
-//             display: true,
-//             scaleLabel: {
-//                 display: true,
-//                 labelString: 'Value'
-//             }
-//         }]
-//     }
-// }
-
-// var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-// var config = {
-// 	type: 'line',
-// 	data: {
-// 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-// 		datasets: [{
-// 			label: 'My First dataset',
-// 			backgroundColor: window.chartColors.red,
-// 			borderColor: window.chartColors.red,
-// 			data: [
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor()
-// 			],
-// 			fill: false,
-// 		}, {
-// 			label: 'My Second dataset',
-// 			fill: false,
-// 			backgroundColor: window.chartColors.blue,
-// 			borderColor: window.chartColors.blue,
-// 			data: [
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor(),
-// 				randomScalingFactor()
-// 			],
-// 		}]
-// 	},
-// 	options: {
-// 		responsive: true,
-// 		title: {
-// 			display: true,
-// 			text: 'Chart.js Line Chart'
-// 		},
-// 		tooltips: {
-// 			mode: 'index',
-// 			intersect: false,
-// 		},
-// 		hover: {
-// 			mode: 'nearest',
-// 			intersect: true
-// 		},
-// 		scales: {
-// 			xAxes: [{
-// 				display: true,
-// 				scaleLabel: {
-// 					display: true,
-// 					labelString: 'Month'
-// 				}
-// 			}],
-// 			yAxes: [{
-// 				display: true,
-// 				scaleLabel: {
-// 					display: true,
-// 					labelString: 'Value'
-// 				}
-// 			}]
-// 		}
-// 	}
-// };
-//
-// window.onload = function() {
-// 	var ctx = document.getElementById('canvas').getContext('2d');
-// 	window.myLine = new Chart(ctx, config);
-// };

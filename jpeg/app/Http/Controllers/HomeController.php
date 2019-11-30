@@ -26,10 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Expense::getTotalPerWeek();
-        
+
         return view("home", [
-            "events" => Event::getNextEvents()
+            "events" => Event::getNextEvents(),
+            "expensesPerWeek" => Expense::getTotalPerWeek(),
+            "receiptsPerWeek" => Receipt::getTotalPerWeek(),
         ]);
     }
 }
