@@ -19,9 +19,9 @@
     </style>
 
     <script src="{{ asset('js/calendar.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('js/profit-chart.js') }}" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    
+    <script src="{{ asset('js/profit-chart.js') }}" charset="utf-8"></script>
+
 
     <div class="container">
         <!-- Finanças -->
@@ -35,7 +35,7 @@
                 <canvas id="profitChart"></canvas>
                 <script type="text/javascript">
                     let profitChart = new ProfitChart("profitChart");
-                    profitChart.buildChart();
+                    profitChart.buildChart(@json($expensesPerWeek), @json($receiptsPerWeek));
                 </script>
             </div>
         </div>

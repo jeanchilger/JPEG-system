@@ -13,6 +13,8 @@
     --secondary-lighter: rgb(135, 135, 135);
 
     --light: rgb(230, 230, 230);
+    --danger: rgb(230, 87, 87);
+    --success: rgb(88, 198, 106);
 
     /* BORDER RADIUS */
     --border-weight: 3px;
