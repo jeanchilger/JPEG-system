@@ -6,6 +6,7 @@ let COLOR_DANGER = getComputedStyle(document.body).getPropertyValue("--danger");
 let COLOR_SUCCESS = getComputedStyle(document.body).getPropertyValue("--success");
 
 let COLOR_SECONDARY = getComputedStyle(document.body).getPropertyValue("--secondary");
+let COLOR_SECONDARY_LIGHT = getComputedStyle(document.body).getPropertyValue("--secondary-light");
 
 function ProfitChart(canvasId) {
     /*
@@ -35,7 +36,7 @@ function ProfitChart(canvasId) {
             mode: "nearest",
             intersect: false,
             filter: function (tooltipItem, data) {
-                tooltipItem.value = "R$ " + Math.abs(parseInt(tooltipItem.value)).toFixed(2);
+                tooltipItem.value = Utils.formatAsMoney(tooltipItem.value);
 
                 return true;
             }
@@ -52,7 +53,7 @@ function ProfitChart(canvasId) {
             xAxes: [
                 {
                     gridLines: {
-                        color: COLOR_SECONDARY,
+                        color: "rgba(0, 0, 0, 0.5)",
                     },
 
                     ticks: {
@@ -67,7 +68,7 @@ function ProfitChart(canvasId) {
             yAxes: [
                 {
                     gridLines: {
-                        color: COLOR_SECONDARY,
+                        display: false,
                     },
 
                     ticks: {
@@ -149,7 +150,7 @@ function ProfitChart(canvasId) {
         let dataLabels = [];
 
         for (var i = 0; i < Object.keys(dataObj).length; i++) {
-            dataLabels[i] = "(" + dataObj[i].startDate + " - " + dataObj[i].endDate + ")";
+            dataLabels[i] = /*"(" +*/ dataObj[i].startDate/* + " - " + dataObj[i].endDate + ")"*/;
         }
 
         return dataLabels;
@@ -159,6 +160,8 @@ function ProfitChart(canvasId) {
         /*
          * Builds a chart.
          * */
+
+        console.log(dataExpenses, dataReceipts);
 
         this.dataExpenses = this.formatDataExpenses(this.formatData(dataExpenses));
         this.dataReceipts = this.formatData(dataReceipts);
@@ -235,7 +238,7 @@ function ProfitChart(canvasId) {
                         ...this.datasetBase, ...{
                             label: "Limite de Segurança",
 
-                            data: [0, 0, 0, 0],
+                            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 
                             backgroundColor: [
                                 COLOR_PRIMARY_LIGHT,

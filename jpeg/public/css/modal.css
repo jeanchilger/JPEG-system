@@ -45,8 +45,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: var(--modal-width);
+    min-width: var(--modal-width);
+    /* max-width: 80%; */
+
     height: var(--modal-height);
+    max-height: 80%;
 
     background: transparent;
 
@@ -61,6 +64,7 @@
     display: none;
 
     transition: var(--transition-medium);
+    overflow: visible;
 }
 
 @media only screen and (max-width: 360px) {

@@ -5,17 +5,18 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
-use Illuminate\Console\Command;
 
 class Expense extends Model
 {
     //
-    public static function getTotalValue() {
+    public static function getTotalMonthValue() {
         /*
-         * Returns the total value of expenses.
+         * Returns the total value of expenses,
+         * for the current month.
          * */
 
-        $expenses = Expense::all();
+        $expenses = Expense::all() -> where("date", ">=", Carbon::now() -> firstOfMonth())
+                                   -> where("date", "<=", Carbon::now() -> lastOfMonth());
         $total = 0;
 
         foreach ($expenses as $expense) {
@@ -23,6 +24,50 @@ class Expense extends Model
         }
 
         return $total;
+    }
+
+    public static function getMonthExpenses() {
+        /*
+         * Returns the expenses for the current month.
+         * */
+
+        return Expense::all() -> where("date", ">=", Carbon::now() -> firstOfMonth())
+                              -> where("date", "<=", Carbon::now() -> lastOfMonth());
+    }
+
+    public static function getMonthExpensesByCategory() {
+        /*
+         * Returns the expenses for the current month,
+         * grouped by category.
+         * */
+
+        // return Expense::raw("SELECT sum(value) as total, category
+        //                      FROM expenses WHERE
+        //                      (date BETWEEN " . Carbon::now() -> firstOfMonth() . "
+        //                       AND" . Carbon::now() -> lastOfMonth() . ")
+        //                      GROUP BY category;");
+        $expenses = Expense::all() -> where("date", ">=", Carbon::now() -> firstOfMonth())
+                                   -> where("date", "<=", Carbon::now() -> lastOfMonth());
+
+        $expensesByCategory = array();
+
+        // dd($expenses);
+        foreach ($expenses as $expense) {
+            if (empty($expensesByCategory[$expense -> category])) {
+                $expensesByCategory[$expense -> category] = $expense -> value;
+
+            } else {
+                $expensesByCategory[$expense -> category] += $expense -> value;
+            }
+        }
+
+        return $expensesByCategory;
+
+        // return Expense::select("category", DB::raw("sum(value) as total"))
+        //                 -> where("date", ">=", Carbon::now() -> firstOfMonth())
+        //                 -> where("date", "<=", Carbon::now() -> lastOfMonth())
+        //                 -> groupBy("category")
+        //                 -> sum("value") ->get();
     }
 
     public static function getTotalPerWeek($startDate=0, $endDate=0) {
@@ -46,9 +91,7 @@ class Expense extends Model
 
         $totalPerWeek = array();
 
-        print_r("END: " . $endDate. "<br>");
-        while ($startDate -> lt($endDate)) {
-            print_r($startDate . "<br>");
+        while ($endDate -> gt($startDate)) {
             $total = 0;
             $date = $startDate -> format("d/m/Y");
             $expenses = Expense::all() -> where("date", ">=", $startDate)
@@ -57,6 +100,8 @@ class Expense extends Model
             foreach ($expenses as $expense) {
                 $total += $expense -> value;
             }
+
+            $startDate = $startDate -> addWeek();
 
             array_push($totalPerWeek, array("total" => $total,
                                             "startDate" => $date,

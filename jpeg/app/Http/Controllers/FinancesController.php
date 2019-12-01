@@ -19,11 +19,13 @@ class FinancesController extends Controller
          * with necessaries values.
          * */
 
-        Expense::getTotalPerWeek();
+        // dd(Expense::getMonthExpensesByCategory());
 
-        return view("finances", [
-            "totalExpenses" => Expense::getTotalValue(),
-            "totalReceipts" => Receipt::getTotalValue()
+        return view("finances.finances", [
+            "totalExpenses" => Expense::getTotalMonthValue(),
+            "totalReceipts" => Receipt::getTotalMonthValue(),
+            "monthExpenses" => Expense::getMonthExpensesByCategory(),
+            // "monthReceipts" => Receipt::getMonthReceiptsByCategory()
         ]);
     }
 }

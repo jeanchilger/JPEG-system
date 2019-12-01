@@ -4,12 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
+
 
 class Receipt extends Model
 {
     //
-    public static function getTotalValue() {
-        $receipts = Receipt::all();
+    public static function getTotalMonthValue() {
+        /*
+        * Returns the total value of expenses,
+        * for the current month.
+        * */
+
+        $receipts = Receipt::all() -> where("date", ">=", Carbon::now() -> firstOfMonth())
+                                   -> where("date", "<=", Carbon::now() -> lastOfMonth());
         $total = 0;
 
         foreach ($receipts as $receipt) {
@@ -17,6 +25,15 @@ class Receipt extends Model
         }
 
         return $total;
+    }
+
+    public static function getMonthReceipts() {
+        /*
+         * Returns the receipts for the current month.
+         * */
+
+        return Receipt::all() -> where("date", ">=", Carbon::now() -> firstOfMonth())
+                              -> where("date", "<=", Carbon::now() -> lastOfMonth());
     }
 
     public static function getTotalPerWeek($startDate=0, $endDate=0) {
@@ -31,16 +48,16 @@ class Receipt extends Model
          * */
 
         if (!$startDate) {
-            $startDate = Carbon::now() -> firstOfMonth();
+            $startDate = CarbonImmutable::now() -> firstOfMonth();
         }
 
         if (!$endDate) {
-            $endDate = Carbon::now();
+            $endDate = CarbonImmutable::now();
         }
 
         $totalPerWeek = array();
 
-        while ($startDate -> lt($endDate)) {
+        while ($endDate -> gt($startDate)) {
             $total = 0;
             $date = $startDate -> format("d/m/Y");
             $receipts = Receipt::all() -> where("date", ">=", $startDate)
@@ -50,11 +67,15 @@ class Receipt extends Model
                 $total += $receipt -> value;
             }
 
+            $startDate = $startDate -> addWeek();
+
+
             array_push($totalPerWeek, array("total" => $total,
                                             "startDate" => $date,
                                             "endDate" => $startDate -> format("d/m/Y")
                                         ));
         }
+
 
         return $totalPerWeek;
 
