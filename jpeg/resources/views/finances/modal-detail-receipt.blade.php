@@ -8,5 +8,15 @@
 
     <div class="modal__body">
 
+        <div class="collection collection--primary">
+            @foreach ($monthReceipts as $category => $value)
+                <div class="collection__item">
+                    {{ $category }}
+                    <div class="suffix" data-role="format-as-money">
+                        {{ $value }}
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 </div>

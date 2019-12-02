@@ -17,6 +17,11 @@ class EventController extends Controller
 
         $events = Event::getNextEvents();
 
+        foreach ($events as $event) {
+            $event -> date = Carbon::createFromFormat("Y-m-d", $event -> date)
+                             -> format("d/m/Y");
+        }
+
         return view("schedule", [
             "events" => $events
         ]);

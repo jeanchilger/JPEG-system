@@ -2,18 +2,19 @@ let COLOR_PRIMARY = getComputedStyle(document.body).getPropertyValue("--primary"
 let COLOR_PRIMARY_LIGHT = getComputedStyle(document.body).getPropertyValue("--primary-light");
 let COLOR_PRIMARY_LIGHTER = getComputedStyle(document.body).getPropertyValue("--primary-lighter");
 
+let COLOR_SECONDARY = getComputedStyle(document.body).getPropertyValue("--secondary");
+let COLOR_SECONDARY_LIGHT = getComputedStyle(document.body).getPropertyValue("--secondary-light");
+let COLOR_SECONDARY_LIGHTER = getComputedStyle(document.body).getPropertyValue("--secondary-lighter");
+
 let COLOR_DANGER = getComputedStyle(document.body).getPropertyValue("--danger");
 let COLOR_SUCCESS = getComputedStyle(document.body).getPropertyValue("--success");
 
-let COLOR_SECONDARY = getComputedStyle(document.body).getPropertyValue("--secondary");
-let COLOR_SECONDARY_LIGHT = getComputedStyle(document.body).getPropertyValue("--secondary-light");
-
-function ProfitChart(canvasId) {
+function ProfitChart(canvasId, datasets=4, theme="secondary") {
     /*
      * Utility object used to create a chart
      * using chart.js library.
      *
-     * Needs the id of the canvas id where
+     * Needs the id of the canvas where
      * the chart is going to be drawn.
      * */
 
@@ -22,7 +23,7 @@ function ProfitChart(canvasId) {
     this.options = {
         legend: {
             labels: {
-                fontColor: COLOR_PRIMARY_LIGHTER,
+                fontColor: (theme == "secondary") ? COLOR_PRIMARY_LIGHTER : COLOR_SECONDARY_LIGHTER,
                 fontSize: 13,
                 fontFamily: "Roboto",
 
@@ -53,11 +54,11 @@ function ProfitChart(canvasId) {
             xAxes: [
                 {
                     gridLines: {
-                        color: "rgba(0, 0, 0, 0.5)",
+                        color: (theme == "secondary") ? "rgba(0, 0, 0, 0.5)" : "rgba(247, 206, 62, 0.5)",
                     },
 
                     ticks: {
-                        fontColor: COLOR_PRIMARY_LIGHT,
+                        fontColor: (theme == "secondary") ? COLOR_PRIMARY_LIGHT : COLOR_SECONDARY_LIGHT,
                         fontSize: 13,
                         fontFamily: "Roboto",
                     },
@@ -72,7 +73,7 @@ function ProfitChart(canvasId) {
                     },
 
                     ticks: {
-                        fontColor: COLOR_PRIMARY_LIGHT,
+                        fontColor: (theme == "secondary") ? COLOR_PRIMARY_LIGHT : COLOR_SECONDARY_LIGHT,
                         fontSize: 13,
                         fontFamily: "Roboto",
                     },
@@ -96,7 +97,7 @@ function ProfitChart(canvasId) {
         pointRadius: 4,
     };
 
-    this.calculateData = function(dataExpenses, dataReceipts) {
+    this.calculateProfit = function(dataExpenses, dataReceipts) {
         /*
          * Calculates the array coresponding
          * to the profit (or loss).
@@ -161,11 +162,9 @@ function ProfitChart(canvasId) {
          * Builds a chart.
          * */
 
-        console.log(dataExpenses, dataReceipts);
-
         this.dataExpenses = this.formatDataExpenses(this.formatData(dataExpenses));
         this.dataReceipts = this.formatData(dataReceipts);
-        this.dataCalculated = this.calculateData(dataExpenses, dataReceipts);
+        this.dataCalculated = this.calculateProfit(dataExpenses, dataReceipts);
         this.dataLabels = this.buildDataLabels(dataExpenses);
 
         this.chart = new Chart(this.canvas, {
@@ -181,14 +180,14 @@ function ProfitChart(canvasId) {
                             data: this.dataCalculated,
 
                             backgroundColor: [
-                                COLOR_PRIMARY,
+                                (theme == "secondary") ? COLOR_PRIMARY : COLOR_SECONDARY,
                             ],
 
                             borderColor: [
-                                COLOR_PRIMARY,
+                                (theme == "secondary") ? COLOR_PRIMARY : COLOR_SECONDARY,
                             ],
 
-                            pointBackgroundColor: COLOR_PRIMARY,
+                            pointBackgroundColor: (theme == "secondary") ? COLOR_PRIMARY : COLOR_SECONDARY,
 
                         }
                     },

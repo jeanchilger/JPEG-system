@@ -12,8 +12,8 @@ class Event extends Model
          * Returs the next events based on current date.
          * */
 
-        $startDate = Carbon::now() -> addWeeks(-2) -> format('Y-m-d');
-        $endDate = Carbon::now() -> addWeeks(2) -> format('Y-m-d');
+        $startDate = Carbon::now() -> format('Y-m-d');
+        $endDate = Carbon::now() -> addWeeks(4) -> format('Y-m-d');
 
         $events = Event::all() -> where("date", ">=", $startDate)
                                -> where("date", "<=", $endDate);

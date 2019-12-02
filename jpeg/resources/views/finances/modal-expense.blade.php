@@ -23,10 +23,26 @@
             </div>
 
             <!-- Expense category -->
-            <div class="form-group form-group--secondary">
+            {{-- <div class="form-group form-group--secondary">
                 <i class="material-icons">category</i>
                 <input type="text" id="category" name="category">
                 <label for="category">Categoria</label>
+            </div> --}}
+
+            <div class="form-group form-group--secondary">
+                <div class="select">
+                    <i class="material-icons">category</i>
+                    <select name="category" id="category">
+                        <option value="">Selecione uma</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category -> name }}">
+                                {{ $category -> name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <label for="category">Categoria</label>
+
+                </div>
             </div>
 
             <!-- Expense description -->

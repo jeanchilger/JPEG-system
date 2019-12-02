@@ -24,7 +24,8 @@
 .form-group input[type=text] ~ label,
 .form-group input[type=password] ~ label,
 .form-group input[type=number] ~ label,
-.form-group textarea ~ label {
+.form-group textarea ~ label,
+.form-group select ~ label {
     text-transform: uppercase;
     position: absolute;
     pointer-events: none;
@@ -71,6 +72,40 @@
     border: none;
     cursor: text;
     background: transparent;
+    width: 100%;
+}
+
+/* selects */
+.form-group .select {
+    position: relative;
+    width: 100%;
+
+}
+
+.form-group .select select {
+    display: none;
+}
+
+.form-group .select .select--hide {
+    display: none;
+}
+
+.form-group .option--selected,
+.form-group .select__items div {
+    padding: var(--group-padding-top);
+    cursor: pointer;
+}
+
+.form-group .option--selected {
+    border-radius: var(--border-weight);
+}
+
+.form-group .select__items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
     width: 100%;
 }
 
@@ -152,6 +187,11 @@
     color: var(--primary);
 }
 
+.form-group--primary .option--selected,
+.form-group--primary .select__items {
+    background-color: var(--secondary);
+}
+
 /* input secondary */
 .form-group--secondary {
     color: var(--secondary);
@@ -163,4 +203,15 @@
 .form-group--secondary textarea {
     border-color: var(--secondary);
     color: var(--secondary);
+}
+
+.form-group--secondary .option--selected,
+.form-group--secondary .select__items {
+    background-color: var(--primary);
+}
+
+
+/* TODO bota isso no lugar certo */
+.select__items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }

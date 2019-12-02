@@ -7,17 +7,15 @@
     </div>
 
     <div class="modal__body">
-        <canvas id="detailExpenseChart"></canvas>
 
         <div class="collection collection--primary">
             @foreach ($monthExpenses as $category => $value)
-                    <div class="collection__item">
-                        {{ $category }}
-                        <div class="suffix" data-role="format-as-money">
-                            {{ $value }}
-                        </div>
+                <div class="collection__item">
+                    {{ $category }}
+                    <div class="suffix" data-role="format-as-money">
+                        {{ $value }}
                     </div>
-                {{-- <hr> --}}
+                </div>
             @endforeach
         </div>
     </div>

@@ -115,8 +115,14 @@
                                 {{ $event -> name }}
                             </div>
                             <div class="collapsible__body">
-                                <p>{{ $event -> location }}</p>
-                                <p>{{ $event -> date }}</p>
+                                <p>
+                                    <i class="material-icons">room</i>
+                                    {{ $event -> location }}
+                                </p>
+                                <p>
+                                    <i class="material-icons">calendar_today</i>
+                                    {{ $event -> date }}
+                                </p>
                             </div>
                         </div>
 

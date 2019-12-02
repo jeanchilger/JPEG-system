@@ -90,7 +90,7 @@ Calendar.prototype.insertEvent = function (eventDate) {
      * also increments the badge.
      * */
 
-    let eventDay = eventDate.split("-")[2];
+    let eventDay = eventDate.split("/")[0];
     let day = this.calendar.querySelector("#calendar-days")
                       .querySelector("#day-" + eventDay);
 

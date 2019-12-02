@@ -62,12 +62,6 @@ class Expense extends Model
         }
 
         return $expensesByCategory;
-
-        // return Expense::select("category", DB::raw("sum(value) as total"))
-        //                 -> where("date", ">=", Carbon::now() -> firstOfMonth())
-        //                 -> where("date", "<=", Carbon::now() -> lastOfMonth())
-        //                 -> groupBy("category")
-        //                 -> sum("value") ->get();
     }
 
     public static function getTotalPerWeek($startDate=0, $endDate=0) {
@@ -110,6 +104,5 @@ class Expense extends Model
         }
 
         return $totalPerWeek;
-
     }
 }
