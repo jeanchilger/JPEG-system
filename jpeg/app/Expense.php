@@ -51,7 +51,6 @@ class Expense extends Model
 
         $expensesByCategory = array();
 
-        // dd($expenses);
         foreach ($expenses as $expense) {
             if (empty($expensesByCategory[$expense -> category])) {
                 $expensesByCategory[$expense -> category] = $expense -> value;
@@ -62,12 +61,6 @@ class Expense extends Model
         }
 
         return $expensesByCategory;
-
-        // return Expense::select("category", DB::raw("sum(value) as total"))
-        //                 -> where("date", ">=", Carbon::now() -> firstOfMonth())
-        //                 -> where("date", "<=", Carbon::now() -> lastOfMonth())
-        //                 -> groupBy("category")
-        //                 -> sum("value") ->get();
     }
 
     public static function getTotalPerWeek($startDate=0, $endDate=0) {
