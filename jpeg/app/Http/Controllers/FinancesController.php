@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Expense;
 use App\Receipt;
+use App\ExpenseCategory;
+use App\ReceiptCategory;
 
 class FinancesController extends Controller
 {
@@ -20,6 +22,8 @@ class FinancesController extends Controller
          * */
 
         // dd(Expense::getMonthExpensesByCategory());
+        ExpenseCategory::createCategories();
+        ReceiptCategory::createCategories();
 
         return view("finances.finances", [
             "totalExpenses" => Expense::getTotalMonthValue(),

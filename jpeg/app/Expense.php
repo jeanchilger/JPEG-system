@@ -51,7 +51,6 @@ class Expense extends Model
 
         $expensesByCategory = array();
 
-        // dd($expenses);
         foreach ($expenses as $expense) {
             if (empty($expensesByCategory[$expense -> category])) {
                 $expensesByCategory[$expense -> category] = $expense -> value;
