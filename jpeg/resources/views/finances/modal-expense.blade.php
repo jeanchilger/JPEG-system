@@ -34,7 +34,7 @@
                     <i class="material-icons">category</i>
                     <select name="category" id="category">
                         <option value="">Selecione uma</option>
-                        @foreach ($categories as $category)
+                        @foreach ($expenseCategories as $category)
                             <option value="{{ $category -> name }}">
                                 {{ $category -> name }}
                             </option>

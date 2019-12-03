@@ -78,7 +78,7 @@
 
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="text-secondary prefixed-title col-md-8 offset-md-2">
                 <i class="material-icons prefix">poll</i>
                 <h1 class="title">Estatísticas</h1>
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-    </div>
+    </div> --}}
 
     <script type="text/javascript">
         document.querySelectorAll("[data-role=format-as-money]").forEach(function (elem) {

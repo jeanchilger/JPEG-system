@@ -11,13 +11,21 @@ class ReceiptCategory extends Model
         /* Stores in the database all categories.
         * */
 
-        $categories = ["Pagamento", "Formatura", "Kit Fotográfico"];
-        if (ReceiptCategory::all() -> count() < sizeof($categories)) {
+        $categories = ["Boleto", "Formatura", "Kit Fotográfico"];
+        $storedCategories = ReceiptCategory::all();
+        $arrayCategories = array();
+
+        if ($storedCategories -> count() < sizeof($categories)) {
+            foreach ($storedCategories as $scat) {
+                array_push($arrayCategories, $scat -> name);
+            }
 
             foreach ($categories as $category) {
-                $reCat = new ReceiptCategory();
-                $reCat -> name = $category;
-                $reCat -> save();
+                if (!in_array($category, $arrayCategories)) {
+                    $reCat = new ReceiptCategory();
+                    $reCat -> name = $category;
+                    $reCat -> save();
+                }
             }
         }
     }

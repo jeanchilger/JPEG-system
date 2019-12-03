@@ -87,16 +87,15 @@
                     calendar.fillMissingDays(firstDay);
                     calendar.fillCalendarDays(maxDays);
                 </script>
-
-                @foreach($events as $event)
-                    <script type="text/javascript">
-                        calendar.insertEvent("{{ $event -> date }}");
-                    </script>
-                @endforeach
-
             </div>
         </div>
     </div>
+
+    @foreach($events as $event)
+        <script type="text/javascript">
+            calendar.insertEvent("{{ $event -> date }}");
+        </script>
+    @endforeach
 
 
 @endsection

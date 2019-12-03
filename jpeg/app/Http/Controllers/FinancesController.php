@@ -29,7 +29,9 @@ class FinancesController extends Controller
             "totalExpenses" => Expense::getTotalMonthValue(),
             "totalReceipts" => Receipt::getTotalMonthValue(),
             "monthExpenses" => Expense::getMonthExpensesByCategory(),
-            "monthReceipts" => Receipt::getMonthReceiptsByCategory()
+            "monthReceipts" => Receipt::getMonthReceiptsByCategory(),
+            "expenseCategories" => ExpenseCategory::all(),
+            "receiptCategories" => ReceiptCategory::all(),
         ]);
     }
 }

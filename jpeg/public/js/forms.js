@@ -61,7 +61,6 @@ document.querySelectorAll(".form-group").forEach(function (e) {
     /* input type text */
     let inputNumber = e.querySelector("input[data-role=input-number]");
     if (inputNumber) {
-        console.log(inputNumber);
         e.insertBefore(newMinusSign(), inputNumber);
 
         insertAfter(newPlusSign(), inputNumber);

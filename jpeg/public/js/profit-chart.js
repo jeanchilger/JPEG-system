@@ -109,7 +109,6 @@ function ProfitChart(canvasId, datasets=4, theme="secondary") {
             dataCalculated[i] = dataReceipts[i].total - dataExpenses[i].total;
         }
 
-        console.log(dataCalculated);
         return dataCalculated;
     }
 

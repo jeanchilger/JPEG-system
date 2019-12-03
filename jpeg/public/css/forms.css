@@ -205,13 +205,17 @@
     color: var(--secondary);
 }
 
-.form-group--secondary .option--selected,
-.form-group--secondary .select__items {
+.form-group--secondary .select__items,
+.form-group--secondary .option--selected {
     background-color: var(--primary);
 }
 
+/* .form-group--secondary .select__items {
+    background-color: var(--primary-light);
+} */
 
-/* TODO bota isso no lugar certo */
+
+/* TODO chage names and correct place */
 .select__items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }

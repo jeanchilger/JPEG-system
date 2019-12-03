@@ -12,7 +12,7 @@
             <!-- Receipt value field -->
             <div class="form-group form-group--secondary">
                 <input type="text" id="value" name="value" data-role="input-number">
-                <label for="value">Valor da Despesa</label>
+                <label for="value">Valor do Recebimento</label>
             </div>
 
             <!-- Receipt date -->
@@ -24,9 +24,19 @@
 
             <!-- Receipt category -->
             <div class="form-group form-group--secondary">
-                <i class="material-icons">category</i>
-                <input type="text" id="category" name="category">
-                <label for="category">Categoria</label>
+                <div class="select">
+                    <i class="material-icons">category</i>
+                    <select name="category" id="category">
+                        <option value="">Selecione uma</option>
+                        @foreach ($receiptCategories as $category)
+                            <option value="{{ $category -> name }}">
+                                {{ $category -> name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <label for="category">Categoria</label>
+
+                </div>
             </div>
 
             <!-- Receipt description -->

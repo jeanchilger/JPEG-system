@@ -13,10 +13,10 @@
         <h1 class="sidenav__logo">LOGO</h1>
 
         <div class="sidenav__nav">
-            <a class="sidenav__nav__link" href="{{ route('clients') }}">Cadastro de clientes</a>
-            <a class="sidenav__nav__link" href="#"> Boletos </a>
+            {{-- <a class="sidenav__nav__link" href="route('clients')">Cadastro de clientes</a> --}}
+            {{-- <a class="sidenav__nav__link" href="#"> Boletos </a> --}}
             <a class="sidenav__nav__link" href="{{ route('schedule') }}"> Agenda </a>
-            <a class="sidenav__nav__link" href="#"> Estoque </a>
+            {{-- <a class="sidenav__nav__link" href="#"> Estoque </a> --}}
             <a class="sidenav__nav__link" href="{{ route('finances') }}"> Finanças </a>
         </div>
     </div>

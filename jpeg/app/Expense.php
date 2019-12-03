@@ -79,7 +79,7 @@ class Expense extends Model
         }
 
         if (!$endDate) {
-            $endDate = CarbonImmutable::now();
+            $endDate = CarbonImmutable::now() -> lastOfMonth();
         }
 
         $totalPerWeek = array();

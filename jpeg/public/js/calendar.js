@@ -94,6 +94,8 @@ Calendar.prototype.insertEvent = function (eventDate) {
     let day = this.calendar.querySelector("#calendar-days")
                       .querySelector("#day-" + eventDay);
 
+    console.log(eventDay);
+
     day.innerHTML = `
         <span class="active">` + day.innerHTML + `</span>
     `;

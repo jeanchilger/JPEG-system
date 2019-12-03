@@ -18,6 +18,11 @@ class Event extends Model
         $events = Event::all() -> where("date", ">=", $startDate)
                                -> where("date", "<=", $endDate);
 
+        foreach ($events as $event) {
+            $event -> date = Carbon::createFromFormat("Y-m-d", $event -> date)
+                                -> format("d/m/Y");
+        }
+
         return $events;
 
     }
