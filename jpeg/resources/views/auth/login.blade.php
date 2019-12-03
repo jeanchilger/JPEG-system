@@ -44,7 +44,7 @@
 
             <div class="login-container col-12 col-sm-8 col-md-4 col-lg-4">
 
-                <h1>LOGO</h1>
+                <img src="{{ asset('img/logo.png') }}" width="50%">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <!-- username field -->

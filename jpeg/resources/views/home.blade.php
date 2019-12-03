@@ -40,7 +40,7 @@
             </div>
         </div>
         <!-- Próximos pagamentos -->
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
 
                 <div class="text-primary prefixed-title">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Agenda -->
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">

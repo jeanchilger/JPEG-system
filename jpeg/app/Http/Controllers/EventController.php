@@ -33,6 +33,10 @@ class EventController extends Controller
         $event -> name = $request -> name;
         $event -> date = Carbon::createFromFormat("d/m/Y", $request->date)
                             ->format("Y-m-d");
+        if (Event::all() -> where("date", "=", $event -> date) -> count() > 0) {
+            return redirect() -> route("schedule");
+        }
+
         $event -> time = $request -> time;
         $event -> location = $request -> location;
         $event -> people = $request -> people;
